@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import CourseCard from "@/components/CourseCard";
 import TrustBand from "@/components/TrustBand";
 import { ADDITIONAL_SPECIALITIES, COURSES } from "@/lib/data";
+import { WHATSAPP_URL } from "@/lib/site";
 
 // Where each "Why Families Choose Us" box links to — same order as
 // ADDITIONAL_SPECIALITIES, existing pages only.
@@ -89,6 +90,52 @@ export default function HomePage() {
       </section>
 
       <TrustBand />
+
+      {/* International payments — PayPal (visible, honestly not live yet) */}
+      <section className="py-14">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="rounded-card border border-cardBorder bg-sky2 p-8 shadow-card sm:p-10">
+            <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+              <div className="max-w-2xl">
+                <p className="text-sm font-extrabold tracking-[3px] text-brandRed">
+                  INTERNATIONAL STUDENTS
+                </p>
+                <h2 className="mt-2 text-2xl font-extrabold text-navyDark sm:text-3xl">
+                  Pay securely with{" "}
+                  <span className="italic text-[#003087]">PayPal</span>
+                </h2>
+                <p className="mt-3 leading-relaxed text-muted">
+                  Learning from the USA, UK, Europe or Australia? Start with
+                  your 3-day absolutely free trial, then pay for your classes
+                  with PayPal.{" "}
+                  <strong className="text-navyDark">
+                    PayPal checkout activates after the institute&apos;s
+                    business registration
+                  </strong>{" "}
+                  — until then, please confirm your payment with us on
+                  WhatsApp and we will guide you step by step.
+                </p>
+              </div>
+              <div className="flex shrink-0 flex-col gap-3 sm:flex-row md:flex-col">
+                <Link
+                  href="/payments"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-navy px-6 py-3 font-extrabold text-white transition hover:bg-navy2"
+                >
+                  See Payment Options →
+                </Link>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25d366] px-6 py-3 font-extrabold text-white transition hover:opacity-90"
+                >
+                  Confirm on WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <div className="border-t border-line py-6 text-center">
         <p className="px-4 text-[1.15rem] font-bold italic text-navyDark">

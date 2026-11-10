@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { COURSES } from "@/lib/data";
 import { SITE_TAGLINE } from "@/lib/site";
+import TrialModal from "@/components/TrialModal";
 
 const NAV = [
   { label: "Home", href: "/" },
@@ -13,6 +14,7 @@ const NAV = [
   { label: "Teachers", href: "/teachers" },
   { label: "Testimonials", href: "/testimonials" },
   { label: "FAQs", href: "/faqs" },
+  { label: "Payments", href: "/payments" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -20,6 +22,7 @@ export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [coursesOpen, setCoursesOpen] = useState(false);
+  const [trialOpen, setTrialOpen] = useState(false);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -28,23 +31,29 @@ export default function Header() {
     <header className="site sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-2">
         <Link href="/" className="brand flex items-center gap-3" aria-label="Quran Light Institute — home">
-          <Image
-            src="/logo.jpg"
-            alt="Quran Light Institute logo"
-            width={640}
-            height={640}
-            className="h-[88px] w-[88px] shrink-0 rounded-full object-cover max-[640px]:h-[62px] max-[640px]:w-[62px]"
-            priority
-          />
+          <span className="logo-shine block h-[88px] w-[88px] shrink-0 rounded-full max-[640px]:h-[62px] max-[640px]:w-[62px]">
+            <Image
+              src="/logo.jpg"
+              alt="Quran Light Institute logo"
+              width={640}
+              height={640}
+              className="h-full w-full rounded-full object-cover"
+              priority
+            />
+          </span>
           <span className="wordmark leading-none">
             <span className="block text-[1.9rem] font-extrabold tracking-tight max-[640px]:text-[1.3rem]">
               <span className="text-navy">Quran</span>{" "}
               <span className="text-brandRed">Light</span>
             </span>
-            <span className="mt-1 block text-[0.95rem] font-extrabold tracking-[5px] text-navy max-[640px]:text-[0.7rem] max-[640px]:tracking-[3px]">
-              INSTITUTE
+            <span className="mt-1 flex items-center gap-2">
+              <span className="h-[3px] w-6 rounded-full bg-brandRed max-[640px]:w-4" aria-hidden="true" />
+              <span className="text-[0.95rem] font-extrabold tracking-[5px] text-navy max-[640px]:text-[0.7rem] max-[640px]:tracking-[3px]">
+                INSTITUTE
+              </span>
+              <span className="h-[3px] w-6 rounded-full bg-brandRed max-[640px]:w-4" aria-hidden="true" />
             </span>
-            <span className="mt-2 inline-block rounded-full bg-navy px-3 py-1 text-[0.72rem] font-bold text-white max-[640px]:text-[0.6rem]">
+            <span className="tagline-ribbon mt-2 inline-block bg-navy px-3 py-1 text-[0.72rem] font-bold text-white max-[640px]:text-[0.6rem]">
               {SITE_TAGLINE}
             </span>
           </span>
@@ -135,13 +144,14 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          <Link
-            href="/contact"
-            className="btn-trial ml-2 inline-flex items-center gap-2 rounded-full bg-brandRed px-5 py-3 text-[0.95rem] text-white shadow-card transition hover:bg-redDark"
+          <button
+            type="button"
+            onClick={() => setTrialOpen(true)}
+            className="btn-trial ml-2 inline-flex items-center gap-2 rounded-full bg-brandRed px-5 py-3 text-[0.95rem] font-extrabold text-white shadow-card transition hover:bg-redDark"
           >
             3-Day FREE Trial
             <span aria-hidden="true">→</span>
-          </Link>
+          </button>
         </nav>
       </div>
 
@@ -191,16 +201,22 @@ export default function Header() {
                 </Link>
               </div>
             )}
-            <Link
-              href="/contact"
-              onClick={() => setOpen(false)}
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                setTrialOpen(true);
+              }}
               className="btn-trial mt-2 rounded-full bg-brandRed px-5 py-3 text-center font-extrabold text-white"
             >
               3-Day FREE Trial →
-            </Link>
+            </button>
           </div>
         </nav>
       )}
+
+      {/* Header free-trial popup — opens on the same page, never navigates. */}
+      <TrialModal open={trialOpen} onClose={() => setTrialOpen(false)} courseName="" />
     </header>
   );
 }
