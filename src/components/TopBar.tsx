@@ -20,6 +20,12 @@ import { EMAIL, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from "@/lib/site";
  * Official number is +92 305 6622104 — NEVER the +92 300 123 0104 shown in
  * the client's design image (that number is not official).
  *
+ * Round 8 (user, mobile screenshot): on mobile the number + WhatsApp
+ * icon sat flush at the very left edge, under the overflowing logo — so
+ * the left group is shifted right by 20px on small screens only
+ * (max-[640px]:pl-5), sitting ahead of the logo. Desktop untouched
+ * (lg:pl-[140px] still clears the logo there).
+ *
  * NOTE: the institute's Facebook / YouTube profile URLs were never
  * supplied, so those two icons are display-only (spans, no href) until the
  * client shares the real links — no URL is invented. WhatsApp links to the
@@ -29,7 +35,7 @@ export default function TopBar() {
   return (
     <div className="topbar relative bg-topbar text-sm font-bold text-white">
       <div className="relative mx-auto max-w-7xl px-4">
-        <div className="relative z-10 flex flex-wrap items-center gap-x-4 gap-y-1 py-2 max-[640px]:flex-nowrap max-[640px]:justify-center max-[640px]:gap-2 max-[640px]:py-1.5 max-[640px]:text-[0.68rem] lg:pl-[140px]">
+        <div className="relative z-10 flex flex-wrap items-center gap-x-4 gap-y-1 py-2 max-[640px]:flex-nowrap max-[640px]:justify-center max-[640px]:gap-2 max-[640px]:py-1.5 max-[640px]:pl-5 max-[640px]:text-[0.68rem] lg:pl-[140px]">
           <a
             href={`mailto:${EMAIL}`}
             className="flex items-center gap-2 hover:text-sky"
