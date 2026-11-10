@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0b3d91;
+  --navy-2: #0a2f6e;
+  --navy-dark: #062453;
+  --navy-deep: #041a3d;
+  --red: #e0231c;
+  --red-dark: #b91410;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-ink antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--navy);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(11, 61, 145, 0.55);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Header trial button: white bold text on red, always — never let nav link
+   colours override it (that was the visibility bug on the old site). */
+nav.main a.btn-trial,
+a.btn-trial {
+  color: #fff !important;
+  font-weight: 800;
+}

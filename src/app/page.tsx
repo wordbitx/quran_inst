@@ -1,0 +1,76 @@
+import Link from "next/link";
+import Hero from "@/components/Hero";
+import CourseCard from "@/components/CourseCard";
+import TrustBand from "@/components/TrustBand";
+import { ADDITIONAL_SPECIALITIES, COURSES } from "@/lib/data";
+
+export default function HomePage() {
+  return (
+    <>
+      <Hero />
+
+      {/* Our Specialities — the 14 courses */}
+      <section className="py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-flex items-center gap-3 rounded-full bg-navy px-6 py-2.5 text-xl font-extrabold text-white">
+              Our Specialities
+            </span>
+            <p className="mt-5 leading-relaxed text-muted">
+              Everything your child — or you — need to read, understand and love the Holy Quran,
+              taught step by step with proper Tajweed. Tap any course to open its page.
+            </p>
+          </div>
+          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-7 lg:gap-3">
+            {COURSES.map((c) => (
+              <CourseCard key={c.slug} course={c} />
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              href="/courses"
+              className="inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3 font-extrabold text-white transition hover:bg-navy2"
+            >
+              View All Courses →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Additional Specialities */}
+      <section className="bg-sky2 py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl font-extrabold text-navyDark">
+              Why Families Choose Us
+            </h2>
+            <p className="mt-3 text-lg font-bold text-navy">Additional Specialities</p>
+            <p className="mt-2 leading-relaxed text-muted">
+              More than lessons — a complete, caring learning experience for every student,
+              wherever in the world you live.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {ADDITIONAL_SPECIALITIES.map((s) => (
+              <article
+                key={s.title}
+                className="rounded-card border border-cardBorder bg-white p-6 shadow-[0_3px_12px_rgba(6,36,83,0.05)]"
+              >
+                <h3 className="text-lg font-extrabold text-navyDark">{s.title}</h3>
+                <p className="mt-2 leading-relaxed text-muted">{s.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <TrustBand />
+
+      <div className="border-t border-line py-6 text-center">
+        <p className="px-4 text-[1.15rem] font-bold italic text-navyDark">
+          Quran Light Institute — Spreading the Light of Quran Worldwide
+        </p>
+      </div>
+    </>
+  );
+}
