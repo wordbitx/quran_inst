@@ -39,12 +39,27 @@ a.btn-trial {
   font-weight: 800;
 }
 
-/* Header wordmark tagline — navy ribbon with a slight curl, like the
-   client's own design (not a straight rectangle). */
+/* Header wordmark tagline — navy BLUE OVAL pill (fully rounded, white text),
+   like the client's own design. */
 .tagline-ribbon {
-  border-radius: 18px 5px 18px 5px;
-  transform: rotate(-1.2deg);
+  border-radius: 9999px;
   box-shadow: 0 4px 10px rgba(6, 36, 83, 0.28);
+  white-space: nowrap;
+}
+
+/* Wordmark gradients — subtle premium double-touch: Quran dark navy to
+   lighter navy, Light deep red to brighter red. */
+.grad-navy {
+  background: linear-gradient(135deg, #041a3d 0%, #0b3d91 55%, #1a5fc0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.grad-red {
+  background: linear-gradient(135deg, #a3120e 0%, #e0231c 55%, #ff5a4d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Subtle premium shine sweep across the circular header logo. Slow and

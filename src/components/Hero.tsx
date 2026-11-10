@@ -96,8 +96,13 @@ export default function Hero() {
           </p>
         </div>
 
+        {/* Hero image with a 3D pop-out feel (like the reference): the photo
+            sits on a frame card that starts lower, so the top of the photo —
+            the children's heads — extends above the card boundary. The exact
+            same hero image, heads never cropped. */}
         <div className="relative mx-auto w-[91%] max-w-[545px] justify-self-center max-[640px]:w-[94%] max-[640px]:max-w-[480px]">
-          <div className="overflow-hidden rounded-[24px] border-[5px] border-white shadow-cardLg">
+          <div className="absolute inset-x-0 bottom-0 top-8 rounded-[24px] border border-cardBorder bg-white/70 shadow-card" aria-hidden="true" />
+          <div className="relative z-10 overflow-hidden rounded-[24px] border-[5px] border-white shadow-cardLg">
             <Image
               src="/hero.jpg"
               alt="A boy and a girl wearing headphones, learning Quran one-to-one online on a laptop"

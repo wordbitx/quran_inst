@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import PageBanner from "@/components/PageBanner";
 import TrialForm from "@/components/TrialForm";
 import { EMAIL, PHONE_DISPLAY, PHONE_LOCAL, PHONE_TEL, WHATSAPP_URL } from "@/lib/site";
@@ -67,14 +66,6 @@ export default function ContactPage() {
           </div>
           <div className="mx-auto mt-10 max-w-2xl">
             <TrialForm />
-            <p className="mt-6 text-center text-sm text-slate-600">
-              Paying from abroad? See our{" "}
-              <Link href="/payments" className="font-bold text-red">
-                International Payments
-              </Link>{" "}
-              page — PayPal for USA, UK, Europe and Australia students once the
-              business account is active.
-            </p>
           </div>
         </div>
       </section>

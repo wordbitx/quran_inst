@@ -14,7 +14,6 @@ const NAV = [
   { label: "Teachers", href: "/teachers" },
   { label: "Testimonials", href: "/testimonials" },
   { label: "FAQs", href: "/faqs" },
-  { label: "Payments", href: "/payments" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -27,11 +26,14 @@ export default function Header() {
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
+  // Header is intentionally NOT sticky: the circular logo is deliberately
+  // oversized and overflows the bar top and bottom (like the reference) —
+  // a sticky header would clip the top of the logo when stuck.
   return (
-    <header className="site sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-2">
+    <header className="site relative z-40 border-b border-line bg-white">
+      <div className="mx-auto flex h-[76px] max-w-7xl items-center gap-3 px-4 max-[640px]:h-[60px]">
         <Link href="/" className="brand flex items-center gap-3" aria-label="Quran Light Institute — home">
-          <span className="logo-shine block h-[88px] w-[88px] shrink-0 rounded-full max-[640px]:h-[62px] max-[640px]:w-[62px]">
+          <span className="logo-shine block h-[112px] w-[112px] shrink-0 rounded-full max-[640px]:h-[76px] max-[640px]:w-[76px]">
             <Image
               src="/logo.jpg"
               alt="Quran Light Institute logo"
@@ -42,16 +44,22 @@ export default function Header() {
             />
           </span>
           <span className="wordmark leading-none">
-            <span className="block text-[1.9rem] font-extrabold tracking-tight max-[640px]:text-[1.3rem]">
-              <span className="text-navy">Quran</span>{" "}
-              <span className="text-brandRed">Light</span>
+            <span className="block text-[1.7rem] font-extrabold tracking-tight max-[640px]:text-[1.2rem]">
+              <span className="grad-navy">Quran</span>{" "}
+              <span className="grad-red">Light</span>
             </span>
             <span className="mt-1 flex items-center gap-2">
-              <span className="h-[3px] w-6 rounded-full bg-brandRed max-[640px]:w-4" aria-hidden="true" />
-              <span className="text-[0.95rem] font-extrabold tracking-[5px] text-navy max-[640px]:text-[0.7rem] max-[640px]:tracking-[3px]">
+              <span className="flex flex-col gap-[3px]" aria-hidden="true">
+                <span className="h-[2px] w-6 rounded-full bg-brandRed max-[640px]:w-4" />
+                <span className="h-[2px] w-6 rounded-full bg-brandRed max-[640px]:w-4" />
+              </span>
+              <span className="text-[0.9rem] font-extrabold tracking-[5px] text-navy max-[640px]:text-[0.68rem] max-[640px]:tracking-[3px]">
                 INSTITUTE
               </span>
-              <span className="h-[3px] w-6 rounded-full bg-brandRed max-[640px]:w-4" aria-hidden="true" />
+              <span className="flex flex-col gap-[3px]" aria-hidden="true">
+                <span className="h-[2px] w-6 rounded-full bg-brandRed max-[640px]:w-4" />
+                <span className="h-[2px] w-6 rounded-full bg-brandRed max-[640px]:w-4" />
+              </span>
             </span>
             <span className="tagline-ribbon mt-2 inline-block bg-navy px-3 py-1 text-[0.72rem] font-bold text-white max-[640px]:text-[0.6rem]">
               {SITE_TAGLINE}
@@ -147,7 +155,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setTrialOpen(true)}
-            className="btn-trial ml-2 inline-flex items-center gap-2 rounded-full bg-brandRed px-5 py-3 text-[0.95rem] font-extrabold text-white shadow-card transition hover:bg-redDark"
+            className="btn-trial ml-2 inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-brandRed px-5 py-3 text-[0.95rem] font-extrabold text-white shadow-card transition hover:bg-redDark"
           >
             3-Day FREE Trial
             <span aria-hidden="true">→</span>
@@ -207,7 +215,7 @@ export default function Header() {
                 setOpen(false);
                 setTrialOpen(true);
               }}
-              className="btn-trial mt-2 rounded-full bg-brandRed px-5 py-3 text-center font-extrabold text-white"
+              className="btn-trial mt-2 whitespace-nowrap rounded-full bg-brandRed px-5 py-3 text-center font-extrabold text-white"
             >
               3-Day FREE Trial →
             </button>

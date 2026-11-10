@@ -15,10 +15,6 @@ const inputCls =
  * Courses are multi-select: pick a course from the dropdown and press the
  * + button to add it; added courses show as removable chips. The WhatsApp
  * message lists every selected course.
- *
- * There is NO live PayPal checkout here. The small note under the button
- * only says international payment via PayPal can be arranged after business
- * registration, to be confirmed on WhatsApp.
  */
 export default function TrialForm({ defaultCourse = "" }: { defaultCourse?: string }) {
   const [name, setName] = useState("");
@@ -185,11 +181,6 @@ export default function TrialForm({ defaultCourse = "" }: { defaultCourse?: stri
       >
         Send via WhatsApp
       </button>
-      <p className="mt-4 text-center text-[0.85rem] leading-relaxed text-muted">
-        Paying from abroad? International payment via PayPal can be arranged after business
-        registration — we will confirm the payment method with you on WhatsApp before your trial
-        starts.
-      </p>
     </form>
   );
 }
