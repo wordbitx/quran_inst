@@ -64,7 +64,7 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
           <div>
             <div className="flex items-start gap-4">
               <span
-                className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-sky text-navy [&_svg]:h-11 [&_svg]:w-11"
+                className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-sky text-navy [&_svg]:h-12 [&_svg]:max-w-full"
                 dangerouslySetInnerHTML={{ __html: courseIcon(course.slug, course.icon) }}
                 aria-hidden="true"
               />

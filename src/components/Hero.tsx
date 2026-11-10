@@ -54,17 +54,18 @@ export default function Hero() {
             <p className="hero-intro text-[1.35rem] leading-snug text-navyDark">
               Help Your Child Learn the Holy Quran from Home
             </p>
-            {/* Premium red swoosh underline, like the reference. */}
+            {/* Premium red swoosh underline, like the reference: a full-width
+                curly line under the whole intro line, sagging gently down. */}
             <svg
-              className="mt-1 block h-[10px] w-full max-w-[360px]"
-              viewBox="0 0 360 10"
+              className="mt-1 block h-[12px] w-full"
+              viewBox="0 0 600 14"
               preserveAspectRatio="none"
               aria-hidden="true"
             >
               <path
-                d="M4 4 C 90 1, 220 9, 356 3"
+                d="M3 5 C 150 12, 450 13, 597 4"
                 stroke="#e0231c"
-                strokeWidth="2.5"
+                strokeWidth="3"
                 fill="none"
                 strokeLinecap="round"
               />
@@ -99,13 +100,13 @@ export default function Hero() {
           <div className="mt-7 flex flex-wrap items-center gap-4">
             <Link
               href="/contact"
-              className="btn-trial inline-flex items-center gap-2 rounded-full bg-brandRed px-7 py-4 text-[1.1rem] text-white shadow-card transition hover:bg-redDark"
+              className="btn-trial inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-brandRed px-7 py-3 text-[1.05rem] text-white shadow-card transition hover:bg-redDark"
             >
               Start Your Free Trial Today <span aria-hidden="true">→</span>
             </Link>
             <Link
               href="/courses"
-              className="inline-flex items-center gap-2 rounded-full border-2 border-navy px-6 py-3.5 text-[1.05rem] font-extrabold text-navy transition hover:bg-sky"
+              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border-2 border-navy px-6 py-3 text-[1.05rem] font-extrabold text-navy transition hover:bg-sky"
             >
               Explore Courses
             </Link>
@@ -118,13 +119,33 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Hero image with a 3D pop-out feel (like the reference): the photo
-            sits on a frame card that starts lower, so the top of the photo —
-            the children's heads — extends above the card boundary. The exact
-            same hero image, heads never cropped. */}
+        {/* Hero image — NO border or frame at all, like the reference:
+            just the photo, with two curved lines (blue + red) sweeping up
+            at its left edge, and the children's heads popping out above
+            the top edge for the 3D feel. The exact same hero image, heads
+            never cropped. */}
         <div className="relative mx-auto w-[91%] max-w-[545px] justify-self-center max-[640px]:w-[94%] max-[640px]:max-w-[480px]">
-          <div className="absolute inset-x-0 bottom-0 top-8 rounded-[24px] border border-cardBorder bg-white/70 shadow-card" aria-hidden="true" />
-          <div className="relative z-10 overflow-hidden rounded-[24px] border-[5px] border-white shadow-cardLg">
+          {/* Blue + red arcs rising up at the start (left) of the photo. */}
+          <svg
+            className="pointer-events-none absolute -left-4 -top-3 z-20 h-[190px] w-[130px]"
+            viewBox="0 0 130 190"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M120 188 C 70 150, 30 100, 18 12"
+              stroke="#0B2A7A"
+              strokeWidth="7"
+              strokeLinecap="round"
+            />
+            <path
+              d="M128 188 C 92 158, 58 112, 50 30"
+              stroke="#E0231C"
+              strokeWidth="7"
+              strokeLinecap="round"
+            />
+          </svg>
+          <div className="relative z-10 overflow-hidden rounded-[24px] shadow-cardLg">
             <Image
               src="/hero.jpg"
               alt="A boy and a girl wearing headphones, learning Quran one-to-one online on a laptop"

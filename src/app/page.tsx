@@ -2,7 +2,10 @@ import Link from "next/link";
 import Hero from "@/components/Hero";
 import CourseCard from "@/components/CourseCard";
 import TrustBand from "@/components/TrustBand";
-import { ADDITIONAL_SPECIALITIES, COURSES } from "@/lib/data";
+import Steps from "@/components/Steps";
+import FaqList from "@/components/FaqList";
+import { ADDITIONAL_SPECIALITIES, COURSES, FAQS } from "@/lib/data";
+import { TRIAL_MESSAGE, whatsappUrl } from "@/lib/site";
 
 // Where each "Why Families Choose Us" box links to — same order as
 // ADDITIONAL_SPECIALITIES, existing pages only.
@@ -42,7 +45,7 @@ export default function HomePage() {
               taught step by step with proper Tajweed. Tap any course to open its page.
             </p>
           </div>
-          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-7 lg:gap-3">
+          <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-7">
             {COURSES.map((c) => (
               <CourseCard key={c.slug} course={c} />
             ))}
@@ -94,6 +97,99 @@ export default function HomePage() {
 
       <TrustBand />
 
+      {/* How It Works — 3 steps, reusing the existing Steps component
+          (same copy as the About page: book the trial, meet the teacher,
+          learn and track progress). */}
+      <section className="py-14">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl font-extrabold text-navyDark">How It Works</h2>
+            <p className="mt-2 text-lg font-bold text-navy">
+              Start Learning in 3 Simple Steps
+            </p>
+          </div>
+          <div className="mt-8">
+            <Steps />
+          </div>
+        </div>
+      </section>
+
+      {/* Courses at a Glance — all 14 courses as quick links. */}
+      <section className="bg-sky2 py-14">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl font-extrabold text-navyDark">
+              Courses at a Glance
+            </h2>
+            <p className="mt-3 leading-relaxed text-muted">
+              Every course is taught live, one-to-one, with proper Tajweed.
+              Tap any course to open its page.
+            </p>
+          </div>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {COURSES.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/courses/${c.slug}`}
+                className="rounded-full border border-cardBorder bg-white px-5 py-2.5 font-bold text-navyDark shadow-[0_3px_12px_rgba(6,36,83,0.05)] transition hover:bg-navy hover:text-white"
+              >
+                {c.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ preview — 3 real FAQs from data.ts, nothing invented. */}
+      <section className="py-14">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl font-extrabold text-navyDark">
+              Common Questions
+            </h2>
+            <p className="mt-3 leading-relaxed text-muted">
+              Everything parents usually ask before the free trial classes.
+            </p>
+          </div>
+          <div className="mt-8">
+            <FaqList faqs={FAQS.slice(0, 3)} />
+          </div>
+          <div className="mt-6 text-center">
+            <Link href="/faqs" className="font-bold text-brandRed hover:underline">
+              View All FAQs →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA band */}
+      <section className="bg-navy py-14 text-center text-white">
+        <div className="mx-auto max-w-3xl px-4">
+          <h2 className="text-3xl font-extrabold">
+            Start Your 3-Day FREE Trial Today
+          </h2>
+          <p className="mt-3 text-[#d7e3f5]">
+            Live one-to-one Quran classes for kids and adults — no cost for
+            the first three days.
+          </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-brandRed px-7 py-3 font-extrabold text-white shadow-card transition hover:bg-redDark"
+            >
+              Book Your Free Trial →
+            </Link>
+            <a
+              href={whatsappUrl(TRIAL_MESSAGE)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-[#25d366] px-7 py-3 font-extrabold text-white transition hover:opacity-90"
+            >
+              Chat on WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
 
       <div className="border-t border-line py-6 text-center">
         <p className="px-4 text-[1.15rem] font-bold italic text-navyDark">

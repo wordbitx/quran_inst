@@ -2,8 +2,9 @@ import { EMAIL, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from "@/lib/site";
 
 /**
  * Top bar — like the client's own design (dark navy bar):
- * email | green WhatsApp icon + official number | globe + "Online Classes
- * Worldwide" | "Follow Us:" + Facebook / YouTube / WhatsApp brand icons.
+ * email | green WhatsApp icon + official number | "Follow Us:" + Facebook /
+ * YouTube / WhatsApp brand icons. (The "Online Classes Worldwide" item was
+ * removed — the user asked for it to go.)
  *
  * The circular logo overflows from the header below into this bar, so the
  * bar carries a white circular scoop (notch) behind the logo — the logo
@@ -27,7 +28,7 @@ export default function TopBar() {
           className="absolute left-2 top-1/2 z-0 hidden h-[132px] w-[132px] -translate-y-1/2 rounded-full bg-white lg:block"
           aria-hidden="true"
         />
-        <div className="relative z-10 flex flex-wrap items-center gap-x-5 gap-y-1 py-2 max-[640px]:flex-nowrap max-[640px]:justify-center max-[640px]:gap-2 max-[640px]:text-[0.8rem] lg:pl-[156px]">
+        <div className="relative z-10 flex flex-wrap items-center gap-x-4 gap-y-1 py-2 max-[640px]:flex-nowrap max-[640px]:justify-center max-[640px]:gap-2 max-[640px]:text-[0.8rem] lg:pl-[140px]">
           <a
             href={`mailto:${EMAIL}`}
             className="flex items-center gap-2 hover:text-sky"
@@ -56,15 +57,6 @@ export default function TopBar() {
             <a href={PHONE_TEL} className="hover:text-sky">
               {PHONE_DISPLAY}
             </a>
-          </span>
-          <span className="hidden text-white/40 md:inline" aria-hidden="true">
-            |
-          </span>
-          <span className="hidden items-center gap-2 md:flex">
-            <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
-              <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm7.9 6.5h-2.2a15 15 0 0 0-1.5-3.6 8 8 0 0 1 3.7 3.6zM12 4c.7.9 1.3 2.1 1.7 3.5h-3.4C10.7 6.1 11.3 4.9 12 4zM8.3 4.9A15 15 0 0 0 6.8 8.5H4.6a8 8 0 0 1 3.7-3.6zM4.2 10.5h2.5c-.1.7-.2 1.3-.2 2s.1 1.3.2 2H4.2a8 8 0 0 1 0-4zm.4 6h2.2a15 15 0 0 0 1.5 3.6 8 8 0 0 1-3.7-3.6zM12 20c-.7-.9-1.3-2.1-1.7-3.5h3.4c-.4 1.4-1 2.6-1.7 3.5zm3.4-5.5h-6.8c-.1-.7-.2-1.3-.2-2s.1-1.3.2-2h6.8c.1.7.2 1.3.2 2s-.1 1.3-.2 2zm.3 5.6a15 15 0 0 0 1.5-3.6h2.2a8 8 0 0 1-3.7 3.6zM17.3 14.5c.1-.7.2-1.3.2-2s-.1-1.3-.2-2h2.5a8 8 0 0 1 0 4h-2.5z" />
-            </svg>
-            Online Classes Worldwide
           </span>
           <span className="ml-auto hidden items-center gap-2 md:flex">
             <span className="text-white/80">Follow Us:</span>
