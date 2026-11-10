@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -37,6 +39,21 @@ nav.main a.btn-trial,
 a.btn-trial {
   color: #fff !important;
   font-weight: 800;
+}
+
+/* Hero headline — the original project font (Baloo 2, extra bold), restored
+   for the "One-to-One Online Quran Classes" headline only. */
+.hero-headline {
+  font-family: "Baloo 2", "Nunito", system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+/* Hero intro line — bold italic serif, like the reference design. */
+.hero-intro {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 700;
 }
 
 /* Header wordmark tagline — navy BLUE OVAL pill (fully rounded, white text),

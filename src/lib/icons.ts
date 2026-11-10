@@ -1,10 +1,10 @@
 // Course icons — CLEAN HAND-DRAWN SVG VECTORS, recreated as-it-is from the
 // client's own reference design ("Our Specialities" grid in
-// WhatsApp_Image_2026-11-09_at_2.25.26_PM.jpeg). Every icon is inline SVG,
-// so it stays razor-sharp at any size — no raster images anywhere.
-//
-// The earlier cropped PNGs were pixelated (raster lifted from the poster),
-// so they were deleted and replaced by these vectors. data.ts is untouched.
+// WhatsApp_Image_2026-11-09_at_2.25.26_PM.jpeg), studied zoomed-in.
+// Every icon is inline SVG, so it stays razor-sharp at any size — no raster
+// images anywhere (the earlier cropped PNGs were pixelated, so they were
+// deleted and replaced by vectors, then redrawn a second time for fidelity).
+// data.ts is untouched.
 // - 11 pictorial icons are pure SVG shapes in deep navy (currentColor) with
 //   red (#E0231C) accents for ribbons/crescents.
 // - Tajweed, Basic Arabic Learning and Seerah are Arabic calligraphy rendered
@@ -16,47 +16,80 @@ const NAVY = "currentColor";
 const RED = "#E0231C";
 const WHITE = "#ffffff";
 
-/** Open book, glossy — Quran Translation. */
-const BOOK_GLOSSY = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><path d="M32 14c-5-4-13-5-22-2v35c9-3 17-2 22 2 5-4 13-5 22-2V12c-9-3-17-2-22 2z"/><path d="M32 14v35" stroke="${WHITE}" stroke-width="1.6" fill="none"/><path d="M13 21h13M13 27h13M13 33h13M38 21h13M38 27h13M38 33h13" stroke="${WHITE}" stroke-width="1.5" stroke-linecap="round" opacity=".85" fill="none"/><path d="M11 15c5-2 11-2 16 0" stroke="${WHITE}" stroke-width="2" stroke-linecap="round" opacity=".35" fill="none"/></svg>`;
+/**
+ * Open book, glossy 3D — Quran Translation.
+ * Left page solid navy, right page a lighter blue gradient (gloss), white
+ * page lines, a white gloss highlight sweeping across the top edge.
+ */
+const BOOK_GLOSSY = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><defs><linearGradient id="bookGloss" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a86e8"/><stop offset=".55" stop-color="#1a5fc0"/><stop offset="1" stop-color="#0b3d91"/></linearGradient></defs><path d="M32 13C26 9 14 8 5 11v36c9-3 21-2 27 2 6-4 18-5 27-2V11c-9-3-21-2-27 2z"/><path d="M32 13c6-4 18-5 27-2v36c-9-3-21-2-27 2V13z" fill="url(#bookGloss)"/><path d="M32 13v36" stroke="${WHITE}" stroke-width="1.6" fill="none"/><path d="M10 20h13M10 26h13M10 32h13" stroke="${WHITE}" stroke-width="1.5" stroke-linecap="round" opacity=".9" fill="none"/><path d="M41 20h13M41 26h13M41 32h13" stroke="${WHITE}" stroke-width="1.5" stroke-linecap="round" opacity=".9" fill="none"/><path d="M9 12c7-2.4 15-2.4 23 1 8-3.4 16-3.4 23-1" stroke="${WHITE}" stroke-width="2.2" stroke-linecap="round" opacity=".5" fill="none"/></svg>`;
 
-/** Letter blocks with A / a / 3 — Noorani Qaida. */
-const LETTER_BLOCKS = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><rect x="21" y="5" width="22" height="19" rx="4"/><rect x="7" y="28" width="22" height="19" rx="4"/><rect x="35" y="28" width="22" height="19" rx="4"/><text x="32" y="20" text-anchor="middle" font-size="13" font-weight="800" fill="${WHITE}" font-family="Arial, sans-serif">A</text><text x="18" y="43" text-anchor="middle" font-size="13" font-weight="800" fill="${WHITE}" font-family="Arial, sans-serif">a</text><text x="46" y="43" text-anchor="middle" font-size="13" font-weight="800" fill="${WHITE}" font-family="Arial, sans-serif">3</text></svg>`;
+/**
+ * Letter blocks with A / a / 3 — Noorani Qaida.
+ * Three rounded blocks in a pyramid, each with a darker base edge for depth.
+ */
+const LETTER_BLOCKS = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><rect x="21" y="4" width="22" height="20" rx="4"/><rect x="6" y="28" width="22" height="20" rx="4"/><rect x="36" y="28" width="22" height="20" rx="4"/><path d="M21 20a4 4 0 0 0 4 4h14a4 4 0 0 0 4-4v-2H21zM6 44a4 4 0 0 0 4 4h14a4 4 0 0 0 4-4v-2H6zM36 44a4 4 0 0 0 4 4h14a4 4 0 0 0 4-4v-2H36z" fill="#041a3d" opacity=".45"/><text x="32" y="19.5" text-anchor="middle" font-size="13" font-weight="800" fill="${WHITE}" font-family="Arial, sans-serif">A</text><text x="17" y="43.5" text-anchor="middle" font-size="13" font-weight="800" fill="${WHITE}" font-family="Arial, sans-serif">a</text><text x="47" y="43.5" text-anchor="middle" font-size="13" font-weight="800" fill="${WHITE}" font-family="Arial, sans-serif">3</text></svg>`;
 
-/** Praying hands — Masnoon Duas. Two mirrored hands, fingertips meeting. */
-const PRAYING_HANDS = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><path d="M30 7c-4.5 3.5-7.5 10-9 17-1.4 7-1.8 15-.4 23 .8 4.4 2.2 8 4.4 11h5V7z"/><path d="M34 7c4.5 3.5 7.5 10 9 17 1.4 7 1.8 15 .4 23-.8 4.4-2.2 8-4.4 11h-5V7z"/><path d="M25.5 15v34M28.5 11v42M38.5 15v34M35.5 11v42" stroke="${WHITE}" stroke-width="1.3" opacity=".55" fill="none"/><rect x="19" y="52" width="13" height="8" rx="2.5"/><rect x="32" y="52" width="13" height="8" rx="2.5"/></svg>`;
+/**
+ * Praying hands — Masnoon Duas.
+ * Two broad mirrored palms leaning together, fingertips meeting at the
+ * top, finger separations as white lines, thumbs crossing near the base,
+ * sleeve cuffs at the bottom.
+ */
+const PRAYING_HANDS = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><path d="M30 5C22 9 16 19 14.5 30 13.2 40 15 50 19.5 57L30 57z"/><path d="M34 5c8 4 14 14 15.5 25 1.3 10-.5 20-5 27L34 57z"/><path d="M25.5 13c-2.2 9-3 19-1.8 30M28.5 10c-1.6 10-2.2 21-1.2 33M38.5 13c2.2 9 3 19 1.8 30M35.5 10c1.6 10 2.2 21 1.2 33" stroke="${WHITE}" stroke-width="1.2" opacity=".55" fill="none"/><path d="M24 6.5 23 17M27 5.5 26.5 16M40 6.5 41 17M37 5.5 37.5 16" stroke="${WHITE}" stroke-width="1.2" opacity=".7" fill="none"/><rect x="15" y="56" width="14" height="7" rx="2"/><rect x="35" y="56" width="14" height="7" rx="2"/></svg>`;
 
-/** Mosque with dome, crescent and minaret — Salah (Namaz). */
-const MOSQUE = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><path fill="${RED}" d="M34 1.2A5 5 0 1 0 34 10.8 6.5 6.5 0 0 1 34 1.2z"/><circle cx="32" cy="12.5" r="1.8"/><path d="M32 15c-9 0-15 6-15 14v3h30v-3c0-8-6-14-15-14z"/><path d="M17 32h30v16H17z"/><rect x="50" y="20" width="7" height="30" rx="1.5"/><path d="M49 20a4.5 4.5 0 0 1 9 0z"/><rect x="48.5" y="30" width="10" height="2.6" rx="1.3"/><path d="M7 48h50v10H7z"/><path d="M28 58V47a4 4 0 0 1 8 0v11z" fill="${WHITE}"/><path d="M21 41v-3a3 3 0 0 1 6 0v3zM37 41v-3a3 3 0 0 1 6 0v3z" fill="${WHITE}"/></svg>`;
+/**
+ * Mosque with onion dome, red crescent and minaret — Salah (Namaz).
+ */
+const MOSQUE = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><path fill="${RED}" d="M35.5 1.5A5.2 5.2 0 1 0 35.5 12 6.4 6.4 0 0 1 35.5 1.5z"/><circle cx="32" cy="13.5" r="1.7"/><path d="M32 16c-7.5 0-13 5.2-13 12.5V31h26v-2.5C45 21.2 39.5 16 32 16z"/><path d="M12.5 25.5c-3.4 0-5.5 2.4-5.5 5.5V33h11v-2c0-3.1-2.1-5.5-5.5-5.5z"/><path d="M16 31h32v17H16z"/><rect x="50" y="18" width="6.5" height="31" rx="1.5"/><path d="M49 18l4.2-7 4.3 7z"/><rect x="47.5" y="27" width="11.5" height="2.6" rx="1.3"/><path d="M6 48h52v10H6z"/><path d="M28 58V41a4 4 0 0 1 8 0v17z" fill="${WHITE}"/><path d="M21 42v-3.5a3 3 0 0 1 6 0V42zM37 42v-3.5a3 3 0 0 1 6 0V42z" fill="${WHITE}"/></svg>`;
 
-/** Graduation cap — Islamic Studies. */
-const GRAD_CAP = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><path d="M32 8 60 21 32 34 4 21z"/><path d="M20 28.5V39c0 5 5.4 8.5 12 8.5S44 44 44 39V28.5L32 35z"/><path d="M60 21v15" stroke="${NAVY}" stroke-width="2.6" fill="none"/><circle cx="60" cy="40" r="3.6"/><path d="M32 14.5 50 22" stroke="${WHITE}" stroke-width="1.6" stroke-linecap="round" opacity=".6" fill="none"/></svg>`;
+/**
+ * Graduation cap — Islamic Studies.
+ * Diamond mortarboard, curved cap below, tassel hanging from the right
+ * with a ball at the end.
+ */
+const GRAD_CAP = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><path d="M32 7 61 20.5 32 34 3 20.5z"/><path d="M20 28.5V39c0 5.2 5.4 8.5 12 8.5S44 44.2 44 39V28.5L32 35.5z"/><path d="M59 21v15.5" stroke="${NAVY}" stroke-width="2.6" fill="none"/><circle cx="59" cy="40.5" r="3.6"/><path d="M32 13.5 51 21" stroke="${WHITE}" stroke-width="1.6" stroke-linecap="round" opacity=".6" fill="none"/></svg>`;
 
-/** Open book, plain with page lines — Hifz-ul-Quran. */
-const BOOK_PLAIN = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><path d="M32 13c-6-4-14-5-23-2v36c9-3 17-2 23 2 6-4 14-5 23-2V11c-9-3-17-2-23 2z"/><path d="M32 13v36" stroke="${WHITE}" stroke-width="1.6" fill="none"/><path d="M12 20h14M12 26h14M12 32h14M38 20h14M38 26h14M38 32h14" stroke="${WHITE}" stroke-width="1.5" stroke-linecap="round" opacity=".85" fill="none"/><path d="M9 9c8-2.4 15-2.4 23 1 8-3.4 15-3.4 23-1v4c-8-2.4-15-2.4-23 1-8-3.4-15-3.4-23-1z" opacity=".9"/></svg>`;
+/**
+ * Open book, plain top view with page lines — Hifz-ul-Quran.
+ */
+const BOOK_PLAIN = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><path d="M32 12C26 8 14 7 5 10v36c9-3 21-2 27 2 6-4 18-5 27-2V10c-9-3-21-2-27 2z"/><path d="M32 12v36" stroke="${WHITE}" stroke-width="1.6" fill="none"/><path d="M11 20h14M11 26h14M11 32h14M39 20h14M39 26h14M39 32h14" stroke="${WHITE}" stroke-width="1.5" stroke-linecap="round" opacity=".85" fill="none"/><path d="M8 12c8-2.6 16-2.6 24 1 8-3.6 16-3.6 24-1" stroke="${WHITE}" stroke-width="2" stroke-linecap="round" opacity=".4" fill="none"/></svg>`;
 
 /** Arabic calligraphy — Tajweed. */
-const TAJWEED_TEXT = `<svg viewBox="0 0 64 64" aria-hidden="true"><text x="32" y="41" text-anchor="middle" font-size="25" font-weight="700" fill="${NAVY}" font-family="'Noto Sans Arabic', 'Noto Naskh Arabic', serif" textLength="52" lengthAdjust="spacingAndGlyphs">تجويد</text></svg>`;
+const TAJWEED_TEXT = `<svg viewBox="0 0 64 64" aria-hidden="true"><text x="32" y="42" text-anchor="middle" font-size="26" font-weight="700" fill="${NAVY}" font-family="'Amiri','Noto Naskh Arabic','Noto Sans Arabic',serif" textLength="54" lengthAdjust="spacingAndGlyphs">تجويد</text></svg>`;
 
-/** Open book with small red ribbon — Quran Reading (Nazra). */
-const BOOK_RIBBON_SMALL = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><path d="M32 13c-5-4-13-5-22-2v35c9-3 17-2 22 2 5-4 13-5 22-2V11c-9-3-17-2-22 2z"/><path d="M32 13v35" stroke="${WHITE}" stroke-width="1.6" fill="none"/><path d="M13 20h13M13 26h13M13 32h13M38 20h13M38 26h13M38 32h13" stroke="${WHITE}" stroke-width="1.5" stroke-linecap="round" opacity=".85" fill="none"/><path d="M29.5 44h5v13l-2.5-2.6L29.5 57z" fill="${RED}"/></svg>`;
+/**
+ * Open book with small red bookmark ribbon — Quran Reading (Nazra).
+ */
+const BOOK_RIBBON_SMALL = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><path d="M32 11C26 7 14 6 5 9v36c9-3 21-2 27 2 6-4 18-5 27-2V9c-9-3-21-2-27 2z"/><path d="M32 11v36" stroke="${WHITE}" stroke-width="1.6" fill="none"/><path d="M11 19h14M11 25h14M11 31h14M39 19h14M39 25h14M39 31h14" stroke="${WHITE}" stroke-width="1.5" stroke-linecap="round" opacity=".85" fill="none"/><path d="M29.5 43h5v13l-2.5-2.8L29.5 56z" fill="${RED}"/></svg>`;
 
-/** Open book with white star and long red ribbon — Selected Surah Memorization. */
-const BOOK_STAR_RIBBON = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><path d="M32 12c-5-4-13-5-22-2v34c9-3 17-2 22 2 5-4 13-5 22-2V10c-9-3-17-2-22 2z"/><path d="M32 12v34" stroke="${WHITE}" stroke-width="1.6" fill="none"/><path d="M38 19h13M38 25h13M38 31h13" stroke="${WHITE}" stroke-width="1.5" stroke-linecap="round" opacity=".85" fill="none"/><path d="M20 17l1.7 3.4 3.8.6-2.7 2.7.6 3.8-3.4-1.8-3.4 1.8.6-3.8-2.7-2.7 3.8-.6z" fill="${WHITE}"/><path d="M29.5 42h5v18l-2.5-3-2.5 3z" fill="${RED}"/></svg>`;
+/**
+ * Open book in perspective with white star and long red ribbon —
+ * Selected Surah Memorization.
+ */
+const BOOK_STAR_RIBBON = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><path d="M32 11C26 7 14 6 5 9v34c9-3 21-2 27 2 6-4 18-5 27-2V9c-9-3-21-2-27 2z"/><path d="M32 11v34" stroke="${WHITE}" stroke-width="1.6" fill="none"/><path d="M39 18h13M39 24h13M39 30h13" stroke="${WHITE}" stroke-width="1.5" stroke-linecap="round" opacity=".85" fill="none"/><path d="M19 16l1.7 3.4 3.8.6-2.7 2.7.6 3.8-3.4-1.8-3.4 1.8.6-3.8-2.7-2.7 3.8-.6z" fill="${WHITE}"/><path d="M29.5 41h5v19l-2.5-3-2.5 3z" fill="${RED}"/></svg>`;
 
 /** Big white "6" in a navy circle — Six Kalimas. */
-const SIX_KALIMAS = `<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="${NAVY}"/><text x="32" y="45" text-anchor="middle" font-size="36" font-weight="800" fill="${WHITE}" font-family="Arial, sans-serif">6</text></svg>`;
+const SIX_KALIMAS = `<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="${NAVY}"/><text x="32" y="46" text-anchor="middle" font-size="38" font-weight="800" fill="${WHITE}" font-family="Arial, sans-serif">6</text></svg>`;
 
 /** Arabic calligraphy — Basic Arabic Learning. */
-const ARABIC_TEXT = `<svg viewBox="0 0 64 64" aria-hidden="true"><text x="32" y="41" text-anchor="middle" font-size="24" font-weight="700" fill="${NAVY}" font-family="'Noto Sans Arabic', 'Noto Naskh Arabic', serif" textLength="50" lengthAdjust="spacingAndGlyphs">أخلاق</text></svg>`;
+const ARABIC_TEXT = `<svg viewBox="0 0 64 64" aria-hidden="true"><text x="32" y="42" text-anchor="middle" font-size="25" font-weight="700" fill="${NAVY}" font-family="'Amiri','Noto Naskh Arabic','Noto Sans Arabic',serif" textLength="52" lengthAdjust="spacingAndGlyphs">أخلاق</text></svg>`;
 
-/** Mosque skyline with two minarets — Quran Tafseer. */
-const MOSQUE_SKYLINE = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><rect x="9" y="24" width="5" height="26" rx="1"/><path d="M8 24a3.5 3.5 0 0 1 7 0z"/><rect x="50" y="24" width="5" height="26" rx="1"/><path d="M49 24a3.5 3.5 0 0 1 7 0z"/><path d="M32 14c-7.5 0-12.5 5-12.5 11v3h25v-3c0-6-5-11-12.5-11z"/><circle cx="32" cy="9.5" r="2.2"/><path d="M20 34a4.5 4.5 0 0 1 9 0v3h-9zM35 34a4.5 4.5 0 0 1 9 0v3h-9z"/><path d="M6 48h52v10H6z"/><path d="M28.5 58V47a3.5 3.5 0 0 1 7 0v11z" fill="${WHITE}"/><path d="M12 50v-2.6a2.6 2.6 0 0 1 5.2 0V50zM46.8 50v-2.6a2.6 2.6 0 0 1 5.2 0V50z" fill="${WHITE}"/></svg>`;
+/**
+ * Mosque skyline with two minarets — Quran Tafseer.
+ * Central onion dome with crescent, tall minarets left and right with
+ * pointed caps, small side domes, arched windows, base platform.
+ */
+const MOSQUE_SKYLINE = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><rect x="8" y="24" width="5" height="26" rx="1"/><path d="M7 24l3.5-6 3.5 6z"/><rect x="51" y="24" width="5" height="26" rx="1"/><path d="M50 24l3.5-6 3.5 6z"/><path d="M32 15c-7 0-12 4.8-12 10.5V28h24v-2.5C44 19.8 39 15 32 15z"/><circle cx="32" cy="10.5" r="2"/><path d="M20 26.5c-3 0-5 2.2-5 5V33h10v-1.5c0-2.8-2-5-5-5zM44 26.5c-3 0-5 2.2-5 5V33h10v-1.5c0-2.8-2-5-5-5z"/><path d="M5 48h54v10H5z"/><path d="M28.5 58V46a3.5 3.5 0 0 1 7 0v12z" fill="${WHITE}"/><path d="M12 50v-2.4a2.4 2.4 0 0 1 4.8 0V50zM47.2 50v-2.4a2.4 2.4 0 0 1 4.8 0V50z" fill="${WHITE}"/></svg>`;
 
 /** Arabic calligraphy — Seerah of Prophet Muhammad ﷺ (user-confirmed text). */
-const SEERAH_TEXT = `<svg viewBox="0 0 64 64" aria-hidden="true"><text x="32" y="40" text-anchor="middle" font-size="15" font-weight="700" fill="${NAVY}" font-family="'Noto Sans Arabic', 'Noto Naskh Arabic', serif" textLength="56" lengthAdjust="spacingAndGlyphs">محمد ﷺ</text></svg>`;
+const SEERAH_TEXT = `<svg viewBox="0 0 64 64" aria-hidden="true"><text x="32" y="40" text-anchor="middle" font-size="15" font-weight="700" fill="${NAVY}" font-family="'Amiri','Noto Naskh Arabic','Noto Sans Arabic',serif" textLength="56" lengthAdjust="spacingAndGlyphs">محمد ﷺ</text></svg>`;
 
-/** Handshake — Islamic Manners & Ethics. */
-const HANDSHAKE = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><path d="M2 29l13 1.5 2.5 2.5-2.5 2.5L2 37z"/><path d="M62 29l-13 1.5-2.5 2.5 2.5 2.5 13 1.5z"/><path d="M19 24c1.6-1.8 4.2-2.5 6.6-1.7l3 1c1.5.5 3.1.4 4.5-.4l2.2-1.2c2.4-1.3 5.4-.8 7.3 1.2l1.7 1.8c1.2 1.3 1.3 3.3.2 4.7l-2.2 2.7c-.5.6-1.3.9-2 .7l-.6-.2-1.2 1.5c-.7.9-1.9 1.1-2.9.5l-.5-.3-1.2 1.5c-.7.9-1.9 1.1-2.9.5l-.5-.3-1.2 1.5c-.7.9-1.9 1.1-2.9.5l-.5-.3-1.2 1.5c-.8.9-2.1 1-3 .3l-3.4-3c-1.5-1.3-1.8-3.5-.7-5.2l1.4-2.2c.5-.8.6-1.8.2-2.6z"/><path d="M26 28.5l3 4M32 27l3 4.5M38 28l2.5 4" stroke="${WHITE}" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>`;
+/**
+ * Handshake — Islamic Manners & Ethics.
+ * Two cuffs coming in from the sides, clasped hands in the centre with
+ * finger separations and thumbs.
+ */
+const HANDSHAKE = `<svg viewBox="0 0 64 64" fill="${NAVY}" aria-hidden="true"><path d="M2 24l14 2 3.5 3.5-2 4L3 36z"/><path d="M62 24l-14 2-3.5 3.5 2 4L61 36z"/><path d="M20 27c1.5-1.7 4-2.4 6.3-1.6l2.8 1c1.4.5 3 .4 4.3-.4l2.1-1.2c2.3-1.3 5.2-.9 7.1 1.1l1.6 1.7c1.2 1.3 1.3 3.2.2 4.6l-2.1 2.6c-.5.6-1.2.9-1.9.7l-.5-.2-1.2 1.5c-.7.9-1.8 1.1-2.8.5l-.4-.3-1.2 1.5c-.7.9-1.8 1.1-2.8.5l-.4-.3-1.2 1.5c-.7.9-1.8 1.1-2.8.5l-.4-.3-1.2 1.5c-.8.9-2 1-2.9.3l-3.3-2.9c-1.4-1.3-1.7-3.4-.6-5.1l1.3-2.1c.5-.8.6-1.7.2-2.5z"/><path d="M26.5 28.5l2.8 4M32 27l2.8 4.5M37.5 28l2.3 4" stroke="${WHITE}" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>`;
 
 /** Icon SVG by course slug. Every slug has an entry — no fallback needed. */
 export const COURSE_ICONS: Record<string, string> = {

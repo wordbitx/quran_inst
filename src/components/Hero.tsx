@@ -2,14 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 const FEATURES = [
-  { label: "Live Online Classes", icon: "monitor" },
-  { label: "Kids & Adults", icon: "people" },
-  { label: "Flexible Timings", icon: "globe" },
-  { label: "Personalized Learning", icon: "shield" },
+  { lines: ["Live", "Online Classes"], icon: "monitor" },
+  { lines: ["Kids &", "Adults"], icon: "people" },
+  { lines: ["Flexible", "Timings"], icon: "globe" },
+  { lines: ["Personalized", "Learning"], icon: "shield" },
 ] as const;
 
 function FeatureIcon({ kind }: { kind: string }) {
-  const cls = "h-[30px] w-[30px] shrink-0 text-navy";
+  const cls = "h-[26px] w-[26px] shrink-0 text-navy";
   if (kind === "monitor")
     return (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={cls} aria-hidden="true">
@@ -50,10 +50,27 @@ export default function Hero() {
     <section className="relative overflow-hidden bg-gradient-to-b from-white via-sky2 to-sky">
       <div className="mx-auto grid max-w-7xl items-center gap-7 px-4 pb-14 pt-11 lg:grid-cols-2">
         <div>
-          <p className="text-[1.35rem] font-bold leading-snug text-navyDark">
-            Help Your Child Learn the Holy Quran from Home
-          </p>
-          <h1 className="mt-3 text-[clamp(2.5rem,5.2vw,4.1rem)] font-extrabold leading-[1.05] tracking-tight text-navy">
+          <div className="relative inline-block max-w-full">
+            <p className="hero-intro text-[1.35rem] leading-snug text-navyDark">
+              Help Your Child Learn the Holy Quran from Home
+            </p>
+            {/* Premium red swoosh underline, like the reference. */}
+            <svg
+              className="mt-1 block h-[10px] w-full max-w-[360px]"
+              viewBox="0 0 360 10"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M4 4 C 90 1, 220 9, 356 3"
+                stroke="#e0231c"
+                strokeWidth="2.5"
+                fill="none"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+          <h1 className="hero-headline mt-3 text-[clamp(2.5rem,5.2vw,4.1rem)] leading-[1.05] tracking-tight text-navy">
             <span className="whitespace-nowrap max-[1020px]:whitespace-normal">
               One-to-One Online
             </span>
@@ -63,14 +80,19 @@ export default function Hero() {
             Qualified <span className="text-brandRed">•</span> Caring{" "}
             <span className="text-brandRed">•</span> Experienced Teachers
           </p>
-          <ul className="mt-6 flex flex-wrap gap-x-4 gap-y-3">
+          {/* Four features on ONE row at desktop widths (like the reference);
+              they may wrap on mobile only. */}
+          <ul className="mt-6 flex flex-wrap gap-x-3 gap-y-3 lg:flex-nowrap lg:gap-x-3 xl:gap-x-4">
             {FEATURES.map((f) => (
               <li
-                key={f.label}
-                className="flex items-center gap-2 border-r border-line pr-4 text-[0.92rem] font-extrabold text-navyDark last:border-r-0 last:pr-0"
+                key={f.lines[1]}
+                className="flex items-center gap-2 border-r border-line pr-3 text-[0.8rem] font-extrabold leading-tight text-navyDark last:border-r-0 last:pr-0 lg:pr-4 lg:text-[0.85rem]"
               >
                 <FeatureIcon kind={f.icon} />
-                {f.label}
+                <span>
+                  <span className="block">{f.lines[0]}</span>
+                  <span className="block">{f.lines[1]}</span>
+                </span>
               </li>
             ))}
           </ul>
