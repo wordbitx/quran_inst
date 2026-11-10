@@ -45,6 +45,9 @@ Nothing is stored on a server.
 - `hero.jpg` — hero photo, 1760×1408 (boy and girl with headphones at the
   laptop, logo on its lid, mosque behind), cropped from the client's own design
 - `about.webp` — photo used on the About page
+- `icons/handshake.png` — the Islamic Manners & Ethics handshake icon,
+  cropped from the client's reference design (transparent PNG); all other
+  course icons are SVG recreations in `src/lib/icons.ts`
 
 ## Run it
 
@@ -60,3 +63,33 @@ npm start        # serve the production build
 Any Next.js host works (e.g. Vercel: import the repo, framework preset
 Next.js, no extra settings). The trial form needs no backend — it hands off
 to WhatsApp.
+
+## PayPal — how to go live (owner checklist)
+
+The site is **PayPal-ready, NOT live**. No PayPal account exists yet, no
+course prices have been set, and no money can be taken. The integration is
+built so it activates in 5 steps:
+
+1. **Register the business** — USA/UK LLC (or other) + business documents.
+2. **Open a PayPal Business account** in the business name.
+3. **Put the live credentials in Vercel** (Project Settings → Environment
+   Variables): `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET` and
+   `NEXT_PUBLIC_PAYPAL_CLIENT_ID` (same client ID as the first one).
+   Keep the secret server-side only — it never goes in code or in the browser.
+4. **Set `PAYPAL_MODE=live`** (it defaults to `sandbox` for testing).
+5. **Set the course prices** in `src/lib/paypal.ts` (`COURSE_PRICES` — it is
+   empty on purpose; no prices are invented). Amounts come from this
+   server-side list only, never from the browser.
+
+Then **redeploy**. Until then:
+
+- `/api/paypal/create-order` and `/api/paypal/capture-order` answer
+  **503 "PayPal not configured yet"** instead of charging anything.
+- The PayPal button (`src/components/PayPalCheckout.tsx`) only renders when
+  `NEXT_PUBLIC_PAYPAL_CLIENT_ID` is set; otherwise the `/payments` page shows
+  the WhatsApp confirmation flow.
+- The `/payments` page (linked from the Footer and the Contact page) explains
+  to international students that PayPal activates after business registration,
+  and that the 3-day free trial always comes first, with no payment needed.
+- To test before going live, use the PayPal sandbox credentials with
+  `PAYPAL_MODE=sandbox`.

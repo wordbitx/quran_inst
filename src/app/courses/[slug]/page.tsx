@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageBanner from "@/components/PageBanner";
+import CourseTrialButton from "@/components/CourseTrialButton";
 import TrialForm from "@/components/TrialForm";
 import { COURSES, COURSE_MAP } from "@/lib/data";
+import { courseIcon } from "@/lib/icons";
 import { trialMessageForCourse, whatsappUrl } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -63,7 +65,7 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
             <div className="flex items-start gap-4">
               <span
                 className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-sky text-navy [&_svg]:h-11 [&_svg]:w-11"
-                dangerouslySetInnerHTML={{ __html: course.icon }}
+                dangerouslySetInnerHTML={{ __html: courseIcon(course.slug, course.icon) }}
                 aria-hidden="true"
               />
               <div>
@@ -118,12 +120,7 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
                 3-Day Absolutely FREE Trial Classes — experience real one-to-one lessons with no
                 cost for the first three days.
               </p>
-              <Link
-                href="/contact"
-                className="btn-trial mt-4 block rounded-full bg-brandRed px-6 py-3 text-center font-extrabold text-white transition hover:bg-redDark"
-              >
-                Book FREE Trial for This Course
-              </Link>
+              <CourseTrialButton courseName={course.name} />
               <a
                 href={whatsappUrl(trialMessageForCourse(course.name))}
                 target="_blank"

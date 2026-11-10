@@ -8,20 +8,45 @@ const inputCls =
   "w-full rounded-xl border border-cardBorder bg-white px-4 py-3 text-[16px] text-ink outline-none focus:border-navy focus:ring-2 focus:ring-navy/20";
 
 /**
- * Free-trial form — same behaviour as the previous site: on submit it opens
- * WhatsApp (wa.me/923056622104) with the details pre-filled, and shows the
- * confirmation note. Nothing is stored on any server.
+ * Free-trial form — on submit it opens WhatsApp (wa.me/923056622104) with
+ * the details pre-filled, and shows the confirmation note. Nothing is stored
+ * on any server.
+ *
+ * Courses are multi-select: pick a course from the dropdown and press the
+ * + button to add it; added courses show as removable chips. The WhatsApp
+ * message lists every selected course.
+ *
+ * There is NO live PayPal checkout here. The small note under the button
+ * only says international payment via PayPal can be arranged after business
+ * registration, to be confirmed on WhatsApp.
  */
 export default function TrialForm({ defaultCourse = "" }: { defaultCourse?: string }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [age, setAge] = useState("");
   const [studentType, setStudentType] = useState("Kid");
-  const [course, setCourse] = useState(defaultCourse);
+  const [selectedCourses, setSelectedCourses] = useState<string[]>(
+    defaultCourse ? [defaultCourse] : [],
+  );
+  const [picker, setPicker] = useState("");
   const [time, setTime] = useState("");
   const [message, setMessage] = useState("");
   const [done, setDone] = useState(false);
   const [error, setError] = useState("");
+
+  const availableCourses = COURSES.filter((c) => !selectedCourses.includes(c.name));
+
+  function addCourse() {
+    if (!picker) return;
+    if (!selectedCourses.includes(picker)) {
+      setSelectedCourses([...selectedCourses, picker]);
+    }
+    setPicker("");
+  }
+
+  function removeCourse(courseName: string) {
+    setSelectedCourses(selectedCourses.filter((c) => c !== courseName));
+  }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -40,7 +65,9 @@ export default function TrialForm({ defaultCourse = "" }: { defaultCourse?: stri
       `Name: ${name.trim()}`,
       `WhatsApp Number: ${phone.trim()}`,
       `Classes For: ${studentType}`,
-      `Course: ${course || "Not sure — please guide us"}`,
+      selectedCourses.length > 0
+        ? `Courses: ${selectedCourses.join(", ")}`
+        : "Course: Not sure — please guide us",
     ];
     if (age.trim()) lines.push(`Student Age: ${age.trim()}`);
     if (time.trim()) lines.push(`Preferred Time: ${time.trim()}`);
@@ -79,17 +106,61 @@ export default function TrialForm({ defaultCourse = "" }: { defaultCourse?: stri
             <option>Both kids &amp; adults</option>
           </select>
         </label>
-        <label className="block sm:col-span-2">
-          <span className="mb-1 block text-sm font-bold text-navyDark">Course</span>
-          <select className={inputCls} value={course} onChange={(e) => setCourse(e.target.value)}>
-            <option value="">Not sure — please guide us</option>
-            {COURSES.map((c) => (
-              <option key={c.slug} value={c.name}>
-                {c.name}
-              </option>
-            ))}
-          </select>
-        </label>
+        <div className="block sm:col-span-2">
+          <span className="mb-1 block text-sm font-bold text-navyDark">
+            Courses — pick one or more
+          </span>
+          <div className="flex items-stretch gap-2">
+            <select
+              className={`${inputCls} flex-1`}
+              value={picker}
+              onChange={(e) => setPicker(e.target.value)}
+              aria-label="Choose a course to add"
+            >
+              <option value="">Choose a course to add…</option>
+              {availableCourses.map((c) => (
+                <option key={c.slug} value={c.name}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
+            <button
+              type="button"
+              onClick={addCourse}
+              disabled={!picker}
+              aria-label="Add course"
+              title="Add course"
+              className="shrink-0 rounded-xl bg-navy px-5 text-2xl font-extrabold leading-none text-white transition hover:bg-navy2 disabled:opacity-40"
+            >
+              +
+            </button>
+          </div>
+          {selectedCourses.length > 0 ? (
+            <div className="mt-3 flex flex-wrap gap-2">
+              {selectedCourses.map((c) => (
+                <span
+                  key={c}
+                  className="inline-flex items-center gap-2 rounded-full bg-sky px-3 py-1.5 text-sm font-bold text-navyDark"
+                >
+                  {c}
+                  <button
+                    type="button"
+                    onClick={() => removeCourse(c)}
+                    aria-label={`Remove ${c}`}
+                    title={`Remove ${c}`}
+                    className="flex h-5 w-5 items-center justify-center rounded-full bg-navy text-xs leading-none text-white transition hover:bg-brandRed"
+                  >
+                    ×
+                  </button>
+                </span>
+              ))}
+            </div>
+          ) : (
+            <p className="mt-2 text-sm text-muted">
+              No course picked yet — add one above, or leave it and we will guide you.
+            </p>
+          )}
+        </div>
         <label className="block sm:col-span-2">
           <span className="mb-1 block text-sm font-bold text-navyDark">Preferred Class Time / Time Zone</span>
           <input className={inputCls} value={time} onChange={(e) => setTime(e.target.value)} placeholder="e.g. 6pm PKT / 7pm UK time" />
@@ -114,6 +185,11 @@ export default function TrialForm({ defaultCourse = "" }: { defaultCourse?: stri
       >
         Send via WhatsApp
       </button>
+      <p className="mt-4 text-center text-[0.85rem] leading-relaxed text-muted">
+        Paying from abroad? International payment via PayPal can be arranged after business
+        registration — we will confirm the payment method with you on WhatsApp before your trial
+        starts.
+      </p>
     </form>
   );
 }

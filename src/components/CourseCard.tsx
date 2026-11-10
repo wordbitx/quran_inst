@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Course } from "@/lib/data";
+import { courseIcon } from "@/lib/icons";
 
 export default function CourseCard({ course }: { course: Course }) {
   return (
@@ -9,7 +10,7 @@ export default function CourseCard({ course }: { course: Course }) {
     >
       <span
         className="ic flex h-14 w-14 items-center justify-center text-navy [&_svg]:h-11 [&_svg]:w-11"
-        dangerouslySetInnerHTML={{ __html: course.icon }}
+        dangerouslySetInnerHTML={{ __html: courseIcon(course.slug, course.icon) }}
         aria-hidden="true"
       />
       <h3 className="mt-3 text-[1.02rem] font-extrabold leading-snug text-navyDark">

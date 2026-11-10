@@ -4,6 +4,23 @@ import CourseCard from "@/components/CourseCard";
 import TrustBand from "@/components/TrustBand";
 import { ADDITIONAL_SPECIALITIES, COURSES } from "@/lib/data";
 
+// Where each "Why Families Choose Us" box links to — same order as
+// ADDITIONAL_SPECIALITIES, existing pages only.
+const SPECIALITY_HREFS = [
+  "/courses", // Live One-to-One Online Classes
+  "/teachers", // Qualified Male & Female Teachers
+  "/courses", // Classes for Kids & Adults
+  "/contact", // Flexible Class Timings
+  "/courses/islamic-manners-ethics", // Islamic Manners & Ethics
+  "/courses/six-kalimas", // Six Kalimas
+  "/courses/selected-surah-memorization", // Selected Surah Memorization
+  "/courses/basic-arabic-learning", // Basic Arabic Learning
+  "/courses/quran-tafseer", // Quran Tafseer
+  "/courses/seerah", // Seerah of Prophet Muhammad
+  "/about", // Student Progress Monitoring
+  "/contact", // 3-Day Absolutely FREE Trial Classes
+];
+
 export default function HomePage() {
   return (
     <>
@@ -47,18 +64,25 @@ export default function HomePage() {
             <p className="mt-3 text-lg font-bold text-navy">Additional Specialities</p>
             <p className="mt-2 leading-relaxed text-muted">
               More than lessons — a complete, caring learning experience for every student,
-              wherever in the world you live.
+              wherever in the world you live. Tap any box to open its page.
             </p>
           </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {ADDITIONAL_SPECIALITIES.map((s) => (
-              <article
+            {ADDITIONAL_SPECIALITIES.map((s, i) => (
+              <Link
                 key={s.title}
-                className="rounded-card border border-cardBorder bg-white p-6 shadow-[0_3px_12px_rgba(6,36,83,0.05)]"
+                href={SPECIALITY_HREFS[i] ?? "/courses"}
+                className="group block rounded-card border border-cardBorder bg-white p-6 shadow-[0_3px_12px_rgba(6,36,83,0.05)] transition duration-300 hover:-translate-y-1.5 hover:shadow-card"
               >
                 <h3 className="text-lg font-extrabold text-navyDark">{s.title}</h3>
                 <p className="mt-2 leading-relaxed text-muted">{s.text}</p>
-              </article>
+                <span className="mt-3 inline-flex items-center gap-1 text-[0.9rem] font-bold text-brandRed opacity-0 transition group-hover:opacity-100">
+                  Learn more
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </span>
+              </Link>
             ))}
           </div>
         </div>
