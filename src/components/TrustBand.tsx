@@ -23,7 +23,7 @@ export default function TrustBand() {
         </div>
         <Link
           href="/contact"
-          className="mt-4 flex items-center justify-center gap-3 rounded-2xl bg-brandRed px-6 py-4 text-center text-white transition hover:bg-redDark lg:mt-0 lg:rounded-none lg:rounded-r-2xl"
+          className="mt-4 flex items-center justify-center gap-3 rounded-2xl bg-brandRed px-6 py-4 text-center text-white transition hover:brightness-90 lg:mt-0 lg:rounded-none lg:rounded-r-2xl"
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-8 w-8 shrink-0" aria-hidden="true">
             <path d="M12 21s-7.5-4.7-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1.1 4.5 2.6l1 1.4 1-1.4C14 6.1 15.5 5 17.5 5 21 5 23 8.5 21.5 12c-2 4.3-9.5 9-9.5 9z" />

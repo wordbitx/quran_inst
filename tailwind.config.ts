@@ -9,19 +9,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: "#0b3d91",
-        navy2: "#0a2f6e",
-        navyDark: "#062453",
-        navyDeep: "#041a3d",
-        brandRed: "#e0231c",
-        redDark: "#b91410",
-        redSoft: "#fdeceb",
-        sky: "#e9f2ff",
-        sky2: "#f5f9ff",
-        ink: "#16294d",
-        muted: "#3d547a",
-        line: "#d7e3f5",
-        cardBorder: "#c9dbf6",
+        /* ONE navy, ONE red — sampled from the reference image with a
+           colour picker: navy #00338C (top-bar modal pixel; the wordmark
+           navy samples #00328B, the same colour), red #D00000 (trial
+           button + hero red text cluster #CC0212–#D60000). Every navy
+           token points at the same hex and every red token at the same
+           hex — no second navy or second red anywhere. navySoft / sky /
+           line / cardBorder are light TINTS of that one navy (same hue,
+           mixed with white) for text on navy and pale surfaces; ink /
+           muted are dark tints of the same hue for body text. */
+        navy: "#00338c",
+        navy2: "#00338c",
+        navyDark: "#00338c",
+        navyDeep: "#00338c",
+        topbar: "#00338c",
+        navySoft: "#c3d7f5",
+        brandRed: "#d00000",
+        redDark: "#d00000",
+        redSoft: "#fdecec",
+        sky: "#e8f0fd",
+        sky2: "#f4f8fe",
+        ink: "#0a2a5e",
+        muted: "#33517e",
+        line: "#d3e0f7",
+        cardBorder: "#c3d5f5",
         whatsapp: "#25d366",
       },
       fontFamily: {
@@ -36,8 +47,8 @@ const config: Config = {
         ],
       },
       boxShadow: {
-        card: "0 10px 30px rgba(6,36,83,0.10)",
-        cardLg: "0 22px 50px rgba(6,36,83,0.16)",
+        card: "0 10px 30px rgba(0,51,140,0.10)",
+        cardLg: "0 22px 50px rgba(0,51,140,0.16)",
       },
       borderRadius: { card: "18px" },
     },

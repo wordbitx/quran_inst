@@ -15,7 +15,7 @@ export default function CourseTrialButton({ courseName }: { courseName: string }
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="btn-trial mt-4 block w-full rounded-full bg-brandRed px-6 py-3 text-center font-extrabold text-white transition hover:bg-redDark"
+        className="btn-trial mt-4 block w-full rounded-full bg-brandRed px-6 py-3 text-center font-extrabold text-white transition hover:brightness-90"
       >
         Book FREE Trial for This Course
       </button>

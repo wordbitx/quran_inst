@@ -6,7 +6,7 @@ export default function CourseCard({ course }: { course: Course }) {
   return (
     <Link
       href={`/courses/${course.slug}`}
-      className="spec-card group flex flex-col items-center rounded-card border border-cardBorder bg-white px-2 py-4 text-center shadow-[0_3px_12px_rgba(6,36,83,0.05)] transition hover:-translate-y-1 hover:shadow-card"
+      className="spec-card group flex flex-col items-center rounded-card border border-cardBorder bg-white px-2 py-4 text-center shadow-[0_3px_12px_rgba(0,51,140,0.05)] transition hover:-translate-y-1 hover:shadow-card"
     >
       <span
         className="ic flex h-[4.25rem] w-[4.25rem] items-center justify-center text-navy [&_svg]:h-14 [&_svg]:max-w-full"

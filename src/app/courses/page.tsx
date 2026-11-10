@@ -45,7 +45,7 @@ export default function CoursesPage() {
             </p>
             <Link
               href="/contact"
-              className="btn-trial mt-6 inline-flex items-center gap-2 rounded-full bg-brandRed px-7 py-3.5 font-extrabold text-white shadow-card transition hover:bg-redDark"
+              className="btn-trial mt-6 inline-flex items-center gap-2 rounded-full bg-brandRed px-7 py-3.5 font-extrabold text-white shadow-card transition hover:brightness-90"
             >
               Book Your FREE Trial →
             </Link>

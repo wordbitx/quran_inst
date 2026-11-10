@@ -64,7 +64,7 @@ export default function Hero() {
             >
               <path
                 d="M3 5 C 150 12, 450 13, 597 4"
-                stroke="#e0231c"
+                stroke="#d00000"
                 strokeWidth="3"
                 fill="none"
                 strokeLinecap="round"
@@ -97,16 +97,18 @@ export default function Hero() {
               </li>
             ))}
           </ul>
-          <div className="mt-7 flex flex-wrap items-center gap-4">
+          {/* Buttons stay SIDE BY SIDE in one row on mobile too (smaller
+              text/padding so both fit) — never stacked one above the other. */}
+          <div className="mt-7 flex flex-nowrap items-center gap-2 sm:gap-4">
             <Link
               href="/contact"
-              className="btn-trial inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-brandRed px-7 py-3 text-[1.05rem] text-white shadow-card transition hover:bg-redDark"
+              className="btn-trial inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-brandRed px-4 py-2.5 text-[0.82rem] text-white shadow-card transition hover:brightness-90 max-[400px]:px-3 max-[400px]:text-[0.78rem] sm:px-7 sm:py-3 sm:text-[1.05rem]"
             >
               Start Your Free Trial Today <span aria-hidden="true">→</span>
             </Link>
             <Link
               href="/courses"
-              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border-2 border-navy px-6 py-3 text-[1.05rem] font-extrabold text-navy transition hover:bg-sky"
+              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border-2 border-navy px-4 py-2.5 text-[0.82rem] font-extrabold text-navy transition hover:bg-sky max-[400px]:px-3 max-[400px]:text-[0.78rem] sm:px-6 sm:py-3 sm:text-[1.05rem]"
             >
               Explore Courses
             </Link>
@@ -119,32 +121,11 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Hero image — NO border or frame at all, like the reference:
-            just the photo, with two curved lines (blue + red) sweeping up
-            at its left edge, and the children's heads popping out above
-            the top edge for the 3D feel. The exact same hero image, heads
-            never cropped. */}
+        {/* Hero image — CLEAN, just the photo with a soft shadow, nothing
+            drawn over it (no arcs, bands or lines — the user said they
+            spoil the image). The exact same hero image, heads never
+            cropped. */}
         <div className="relative mx-auto w-[91%] max-w-[545px] justify-self-center max-[640px]:w-[94%] max-[640px]:max-w-[480px]">
-          {/* Blue + red arcs rising up at the start (left) of the photo. */}
-          <svg
-            className="pointer-events-none absolute -left-4 -top-3 z-20 h-[190px] w-[130px]"
-            viewBox="0 0 130 190"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M120 188 C 70 150, 30 100, 18 12"
-              stroke="#0B2A7A"
-              strokeWidth="7"
-              strokeLinecap="round"
-            />
-            <path
-              d="M128 188 C 92 158, 58 112, 50 30"
-              stroke="#E0231C"
-              strokeWidth="7"
-              strokeLinecap="round"
-            />
-          </svg>
           <div className="relative z-10 overflow-hidden rounded-[24px] shadow-cardLg">
             <Image
               src="/hero.jpg"
@@ -155,26 +136,34 @@ export default function Hero() {
               priority
             />
           </div>
-          <div className="absolute -left-3 bottom-5 flex items-center gap-3 rounded-2xl border border-cardBorder bg-white px-4 py-2.5 shadow-cardLg max-[640px]:static max-[640px]:mt-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-redSoft text-brandRed">
-              <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden="true">
-                <path d="M12 2 4 5.5v5.6c0 5 3.4 8.6 8 10.4 4.6-1.8 8-5.4 8-10.4V5.5L12 2zm-1.2 14.6-3.2-3.2 1.4-1.4 1.8 1.8 4.2-4.2 1.4 1.4-5.6 5.6z" />
-              </svg>
-            </span>
-            <span>
-              <b className="block text-navyDark">Live One-to-One Classes</b>
-              <span className="text-xs font-bold text-muted">Full teacher attention, every lesson</span>
-            </span>
-          </div>
-          <div className="absolute -right-2 top-4 hidden items-center gap-3 rounded-2xl border border-cardBorder bg-white px-4 py-2.5 shadow-cardLg sm:flex">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky text-navy">
-              <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden="true">
+          {/* Floating badges — premium 3D glossy pills ON the photo, back
+              by popular demand: "5+ Years Experience" bottom-LEFT and
+              "One-to-One Online Classes" bottom-RIGHT. Both float on the
+              photo at every screen size (never below it) and sit on the
+              bottom corners — over the boy's arm / table (left) and the
+              girl's sleeve / table (right) — so they NEVER cover the
+              children's faces. Glossy 3D = white gradient, top highlight,
+              deep layered shadow, slight tilt, coloured icon tile. */}
+          <div className="hero-badge absolute -left-2 bottom-3 z-20 flex -rotate-1 items-center gap-2.5 rounded-2xl px-3.5 py-2.5 max-[640px]:gap-1.5 max-[640px]:px-2.5 max-[640px]:py-1.5 transition hover:-translate-y-0.5 sm:-left-3 sm:bottom-5 sm:gap-3 sm:px-4">
+            <span className="badge-tile flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-white max-[640px]:h-6 max-[640px]:w-6">
+              <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6 max-[640px]:h-3.5 max-[640px]:w-3.5" aria-hidden="true">
                 <path d="M12 3 2 8l10 5 10-5-10-5zM6 13.5V18c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5l-6 3-6-3z" />
               </svg>
             </span>
             <span>
-              <b className="block text-navyDark">5+ Years</b>
-              <span className="text-xs font-bold text-muted">of Teaching Experience</span>
+              <b className="block whitespace-nowrap text-navyDark max-[640px]:text-[0.7rem]">5+ Years Experience</b>
+              <span className="text-xs font-bold text-muted max-[640px]:hidden">of Teaching Experience</span>
+            </span>
+          </div>
+          <div className="hero-badge absolute -right-2 bottom-3 z-20 flex rotate-1 items-center gap-2.5 rounded-2xl px-3.5 py-2.5 max-[640px]:gap-1.5 max-[640px]:px-2.5 max-[640px]:py-1.5 transition hover:-translate-y-0.5 sm:bottom-5 sm:gap-3 sm:px-4">
+            <span className="badge-tile badge-tile-red flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-white max-[640px]:h-6 max-[640px]:w-6">
+              <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6 max-[640px]:h-3.5 max-[640px]:w-3.5" aria-hidden="true">
+                <path d="M12 2 4 5.5v5.6c0 5 3.4 8.6 8 10.4 4.6-1.8 8-5.4 8-10.4V5.5L12 2zm-1.2 14.6-3.2-3.2 1.4-1.4 1.8 1.8 4.2-4.2 1.4 1.4-5.6 5.6z" />
+              </svg>
+            </span>
+            <span>
+              <b className="block whitespace-nowrap text-navyDark max-[640px]:text-[0.7rem]">One-to-One Online Classes</b>
+              <span className="text-xs font-bold text-muted max-[640px]:hidden">Full teacher attention, every lesson</span>
             </span>
           </div>
         </div>

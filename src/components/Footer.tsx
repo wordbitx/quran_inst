@@ -5,7 +5,7 @@ import { EMAIL, PHONE_DISPLAY, PHONE_TEL, SITE_TAGLINE, WHATSAPP_URL } from "@/l
 
 export default function Footer() {
   return (
-    <footer className="site bg-navyDeep text-white">
+    <footer className="site bg-navy text-white">
       <div className="mx-auto max-w-7xl px-4 py-12">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
@@ -20,12 +20,12 @@ export default function Footer() {
               <div className="leading-none">
                 <p className="text-xl font-extrabold">
                   <span className="text-white">Quran</span>{" "}
-                  <span className="text-[#ff5a52]">Light</span>
+                  <span className="text-[#ff8a80]">Light</span>
                 </p>
                 <p className="mt-1 text-xs font-extrabold tracking-[4px]">INSTITUTE</p>
               </div>
             </div>
-            <p className="mt-4 text-[0.92rem] leading-relaxed text-[#b7cff2]">
+            <p className="mt-4 text-[0.92rem] leading-relaxed text-navySoft">
               {SITE_TAGLINE} — live one-to-one classes for kids &amp; adults,
               with qualified, caring and experienced male &amp; female teachers.
             </p>
@@ -44,7 +44,7 @@ export default function Footer() {
                 ["Contact", "/contact"],
               ].map(([label, href]) => (
                 <li key={href}>
-                  <Link href={href} className="text-[#b7cff2] hover:text-white">
+                  <Link href={href} className="text-navySoft hover:text-white">
                     {label}
                   </Link>
                 </li>
@@ -57,7 +57,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-2 text-[0.95rem]">
               {COURSES.slice(0, 6).map((c) => (
                 <li key={c.slug}>
-                  <Link href={`/courses/${c.slug}`} className="text-[#b7cff2] hover:text-white">
+                  <Link href={`/courses/${c.slug}`} className="text-navySoft hover:text-white">
                     {c.name}
                   </Link>
                 </li>
@@ -72,7 +72,7 @@ export default function Footer() {
 
           <div>
             <h3 className="text-base font-extrabold">Contact Us</h3>
-            <ul className="mt-4 space-y-2 text-[0.95rem] text-[#b7cff2]">
+            <ul className="mt-4 space-y-2 text-[0.95rem] text-navySoft">
               <li>
                 <a href={PHONE_TEL} className="hover:text-white">
                   {PHONE_DISPLAY}
@@ -100,7 +100,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <p className="mx-auto max-w-7xl px-4 py-4 text-center text-[0.9rem] text-[#b7cff2]">
+        <p className="mx-auto max-w-7xl px-4 py-4 text-center text-[0.9rem] text-navySoft">
           Quran Light Institute — Spreading the Light of Quran Worldwide
         </p>
         <p className="mx-auto max-w-7xl px-4 pb-5 text-center text-xs text-white/50">

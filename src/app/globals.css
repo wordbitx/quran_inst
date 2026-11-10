@@ -4,13 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ONE navy (#00338C) and ONE red (#D00000), sampled from the reference
+   image — every navy/red variable below is the same hex. */
 :root {
-  --navy: #0b3d91;
-  --navy-2: #0a2f6e;
-  --navy-dark: #062453;
-  --navy-deep: #041a3d;
-  --red: #e0231c;
-  --red-dark: #b91410;
+  --navy: #00338c;
+  --navy-2: #00338c;
+  --navy-dark: #00338c;
+  --navy-deep: #00338c;
+  --red: #d00000;
+  --red-dark: #d00000;
 }
 
 html {
@@ -28,7 +30,7 @@ body {
 }
 
 :focus-visible {
-  outline: 3px solid rgba(11, 61, 145, 0.55);
+  outline: 3px solid rgba(0, 51, 140, 0.55);
   outline-offset: 2px;
   border-radius: 6px;
 }
@@ -60,23 +62,46 @@ a.btn-trial {
    like the client's own design. */
 .tagline-ribbon {
   border-radius: 9999px;
-  box-shadow: 0 4px 10px rgba(6, 36, 83, 0.28);
+  box-shadow: 0 4px 10px rgba(0, 51, 140, 0.28);
   white-space: nowrap;
 }
 
-/* Wordmark gradients — subtle premium double-touch: Quran dark navy to
-   lighter navy, Light deep red to brighter red. */
+/* Wordmark colours — ONE flat navy (#00338C) and ONE flat red (#D00000),
+   sampled from the reference. No gradients: the reference wordmark is a
+   single navy and a single red, and the old multi-shade gradients were
+   the second/third navies the user asked to remove. Class names kept so
+   Header.tsx needs no change. */
 .grad-navy {
-  background: linear-gradient(135deg, #041a3d 0%, #0b3d91 55%, #1a5fc0 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #00338c;
 }
 .grad-red {
-  background: linear-gradient(135deg, #a3120e 0%, #e0231c 55%, #ff5a4d 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #d00000;
+}
+
+/* Hero floating badges — premium 3D glossy pills: white-to-pale-navy
+   gradient (glossy top light), pale-navy border, bright top highlight
+   + deep layered drop shadow so the badge lifts off the photo, slight
+   tilt via Tailwind rotate classes on the element itself. */
+.hero-badge {
+  background: linear-gradient(180deg, #ffffff 0%, #eef4fd 100%);
+  border: 1px solid #c3d5f5;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(0, 51, 140, 0.06),
+    0 16px 32px rgba(0, 51, 140, 0.3),
+    0 4px 10px rgba(0, 51, 140, 0.18);
+}
+.hero-badge .badge-tile {
+  background: #00338c;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 4px 10px rgba(0, 51, 140, 0.35);
+}
+.hero-badge .badge-tile-red {
+  background: #d00000;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 4px 10px rgba(208, 0, 0, 0.35);
 }
 
 /* Subtle premium shine sweep across the circular header logo. Slow and

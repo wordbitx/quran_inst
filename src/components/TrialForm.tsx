@@ -126,7 +126,7 @@ export default function TrialForm({ defaultCourse = "" }: { defaultCourse?: stri
               disabled={!picker}
               aria-label="Add course"
               title="Add course"
-              className="shrink-0 rounded-xl bg-navy px-5 text-2xl font-extrabold leading-none text-white transition hover:bg-navy2 disabled:opacity-40"
+              className="shrink-0 rounded-xl bg-navy px-5 text-2xl font-extrabold leading-none text-white transition hover:brightness-90 disabled:opacity-40"
             >
               +
             </button>
@@ -177,7 +177,7 @@ export default function TrialForm({ defaultCourse = "" }: { defaultCourse?: stri
 
       <button
         type="submit"
-        className="btn-trial mt-6 w-full rounded-full bg-brandRed px-6 py-4 text-lg text-white shadow-card transition hover:bg-redDark"
+        className="btn-trial mt-6 w-full rounded-full bg-brandRed px-6 py-4 text-lg text-white shadow-card transition hover:brightness-90"
       >
         Send via WhatsApp
       </button>

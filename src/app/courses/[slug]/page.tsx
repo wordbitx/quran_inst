@@ -37,9 +37,9 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      <div className="bg-gradient-to-b from-navyDark to-navy py-10 text-white">
+      <div className="bg-navy py-10 text-white">
         <div className="mx-auto max-w-7xl px-4">
-          <p className="text-sm font-bold text-[#b7cff2]">
+          <p className="text-sm font-bold text-navySoft">
             <Link href="/" className="hover:text-white">
               Home
             </Link>
@@ -55,7 +55,7 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
             <span>{course.name}</span>
           </p>
           <h1 className="mt-2 text-3xl font-extrabold sm:text-4xl">{course.name}</h1>
-          <p className="mt-2 max-w-2xl text-[#d7e3f5]">{course.tag}</p>
+          <p className="mt-2 max-w-2xl text-navySoft">{course.tag}</p>
         </div>
       </div>
 
@@ -143,7 +143,7 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
               <Link
                 key={c.slug}
                 href={`/courses/${c.slug}`}
-                className="flex items-center justify-between rounded-2xl border border-cardBorder bg-white px-5 py-4 font-bold text-navyDark shadow-[0_3px_12px_rgba(6,36,83,0.05)] transition hover:-translate-y-0.5 hover:shadow-card"
+                className="flex items-center justify-between rounded-2xl border border-cardBorder bg-white px-5 py-4 font-bold text-navyDark shadow-[0_3px_12px_rgba(0,51,140,0.05)] transition hover:-translate-y-0.5 hover:shadow-card"
               >
                 {c.name}
                 <span aria-hidden="true" className="text-brandRed">

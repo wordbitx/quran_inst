@@ -33,7 +33,7 @@ export default function TeachersPage() {
             {ADDITIONAL_SPECIALITIES.slice(0, 3).map((s) => (
               <article
                 key={s.title}
-                className="rounded-card border border-cardBorder bg-white p-6 shadow-[0_3px_12px_rgba(6,36,83,0.05)]"
+                className="rounded-card border border-cardBorder bg-white p-6 shadow-[0_3px_12px_rgba(0,51,140,0.05)]"
               >
                 <h3 className="text-lg font-extrabold text-navyDark">{s.title}</h3>
                 <p className="mt-2 leading-relaxed text-muted">{s.text}</p>
@@ -46,7 +46,7 @@ export default function TeachersPage() {
           <div className="mt-10 text-center">
             <Link
               href="/contact"
-              className="btn-trial inline-flex items-center gap-2 rounded-full bg-brandRed px-7 py-3.5 font-extrabold text-white shadow-card transition hover:bg-redDark"
+              className="btn-trial inline-flex items-center gap-2 rounded-full bg-brandRed px-7 py-3.5 font-extrabold text-white shadow-card transition hover:brightness-90"
             >
               Meet Your Teacher — FREE Trial →
             </Link>

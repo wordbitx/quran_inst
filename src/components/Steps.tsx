@@ -24,7 +24,7 @@ export default function Steps() {
       {STEPS.map((s) => (
         <li
           key={s.n}
-          className="rounded-card border border-cardBorder bg-white p-6 shadow-[0_3px_12px_rgba(6,36,83,0.05)]"
+          className="rounded-card border border-cardBorder bg-white p-6 shadow-[0_3px_12px_rgba(0,51,140,0.05)]"
         >
           <span className="flex h-11 w-11 items-center justify-center rounded-full bg-navy text-lg font-extrabold text-white">
             {s.n}

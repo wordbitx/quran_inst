@@ -10,9 +10,9 @@ export default function PageBanner({
   sub?: string;
 }) {
   return (
-    <div className="bg-gradient-to-b from-navyDark to-navy py-10 text-white">
+    <div className="bg-navy py-10 text-white">
       <div className="mx-auto max-w-7xl px-4">
-        <p className="text-sm font-bold text-[#b7cff2]">
+        <p className="text-sm font-bold text-navySoft">
           <Link href="/" className="hover:text-white">
             Home
           </Link>
@@ -22,7 +22,7 @@ export default function PageBanner({
           <span>{crumb}</span>
         </p>
         <h1 className="mt-2 text-3xl font-extrabold sm:text-4xl">{title}</h1>
-        {sub ? <p className="mt-2 max-w-2xl text-[#d7e3f5]">{sub}</p> : null}
+        {sub ? <p className="mt-2 max-w-2xl text-navySoft">{sub}</p> : null}
       </div>
     </div>
   );

@@ -59,7 +59,7 @@ export default function TestimonialsPage() {
           </p>
           <Link
             href="/contact"
-            className="btn-trial mt-8 inline-flex items-center gap-2 rounded-full bg-brandRed px-7 py-3.5 font-extrabold text-white shadow-card transition hover:bg-redDark"
+            className="btn-trial mt-8 inline-flex items-center gap-2 rounded-full bg-brandRed px-7 py-3.5 font-extrabold text-white shadow-card transition hover:brightness-90"
           >
             Try the FREE Trial Classes →
           </Link>
@@ -80,7 +80,7 @@ export default function TestimonialsPage() {
             {STEPS.map((s) => (
               <div
                 key={s.n}
-                className="rounded-card border border-cardBorder bg-white p-6 text-center shadow-[0_3px_12px_rgba(6,36,83,0.05)]"
+                className="rounded-card border border-cardBorder bg-white p-6 text-center shadow-[0_3px_12px_rgba(0,51,140,0.05)]"
               >
                 <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-navy text-xl font-extrabold text-white">
                   {s.n}
@@ -92,7 +92,7 @@ export default function TestimonialsPage() {
           </div>
 
           {/* Share-your-experience panel — the honest empty state. */}
-          <div className="mx-auto mt-10 max-w-3xl rounded-card border border-cardBorder bg-white p-8 text-center shadow-[0_3px_12px_rgba(6,36,83,0.05)]">
+          <div className="mx-auto mt-10 max-w-3xl rounded-card border border-cardBorder bg-white p-8 text-center shadow-[0_3px_12px_rgba(0,51,140,0.05)]">
             <div
               className="flex items-center justify-center gap-1 text-[#f5a623]"
               aria-label="Five stars"

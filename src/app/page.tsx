@@ -53,7 +53,7 @@ export default function HomePage() {
           <div className="mt-8 text-center">
             <Link
               href="/courses"
-              className="inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3 font-extrabold text-white transition hover:bg-navy2"
+              className="inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3 font-extrabold text-white transition hover:brightness-90"
             >
               View All Courses →
             </Link>
@@ -79,7 +79,7 @@ export default function HomePage() {
               <Link
                 key={s.title}
                 href={SPECIALITY_HREFS[i] ?? "/courses"}
-                className="group block rounded-card border border-cardBorder bg-white p-6 shadow-[0_3px_12px_rgba(6,36,83,0.05)] transition duration-300 hover:-translate-y-1.5 hover:shadow-card"
+                className="group block rounded-card border border-cardBorder bg-white p-6 shadow-[0_3px_12px_rgba(0,51,140,0.05)] transition duration-300 hover:-translate-y-1.5 hover:shadow-card"
               >
                 <h3 className="text-lg font-extrabold text-navyDark">{s.title}</h3>
                 <p className="mt-2 leading-relaxed text-muted">{s.text}</p>
@@ -131,7 +131,7 @@ export default function HomePage() {
               <Link
                 key={c.slug}
                 href={`/courses/${c.slug}`}
-                className="rounded-full border border-cardBorder bg-white px-5 py-2.5 font-bold text-navyDark shadow-[0_3px_12px_rgba(6,36,83,0.05)] transition hover:bg-navy hover:text-white"
+                className="rounded-full border border-cardBorder bg-white px-5 py-2.5 font-bold text-navyDark shadow-[0_3px_12px_rgba(0,51,140,0.05)] transition hover:bg-navy hover:text-white"
               >
                 {c.name}
               </Link>
@@ -168,14 +168,14 @@ export default function HomePage() {
           <h2 className="text-3xl font-extrabold">
             Start Your 3-Day FREE Trial Today
           </h2>
-          <p className="mt-3 text-[#d7e3f5]">
+          <p className="mt-3 text-navySoft">
             Live one-to-one Quran classes for kids and adults — no cost for
             the first three days.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-brandRed px-7 py-3 font-extrabold text-white shadow-card transition hover:bg-redDark"
+              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-brandRed px-7 py-3 font-extrabold text-white shadow-card transition hover:brightness-90"
             >
               Book Your Free Trial →
             </Link>

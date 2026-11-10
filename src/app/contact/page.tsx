@@ -56,7 +56,7 @@ export default function ContactPage() {
                 key={c.title}
                 href={c.href}
                 {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="rounded-card border border-cardBorder bg-white p-6 shadow-[0_3px_12px_rgba(6,36,83,0.05)] transition hover:-translate-y-1 hover:shadow-card"
+                className="rounded-card border border-cardBorder bg-white p-6 shadow-[0_3px_12px_rgba(0,51,140,0.05)] transition hover:-translate-y-1 hover:shadow-card"
               >
                 <h2 className="text-base font-extrabold text-navyDark">{c.title}</h2>
                 <p className="mt-2 font-bold text-navy">{c.line1}</p>

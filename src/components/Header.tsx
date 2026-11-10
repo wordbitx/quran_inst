@@ -33,7 +33,11 @@ export default function Header() {
     <header className="site relative z-40 border-b border-line bg-white">
       <div className="mx-auto flex h-[76px] max-w-7xl items-center gap-3 px-4 max-[640px]:h-[60px]">
         <Link href="/" className="brand flex items-center gap-3" aria-label="Quran Light Institute — home">
-          <span className="logo-shine block h-[112px] w-[112px] shrink-0 rounded-full max-[640px]:h-[76px] max-[640px]:w-[76px]">
+          {/* Logo — 112px image inside a tight 120px white ring, so the ring
+              HUGS the logo (only ~4px of white all round) and overlaps the
+              bright-navy top bar above, like the reference. The ring is
+              part of the logo itself — no separate white scoop anywhere. */}
+          <span className="logo-shine block h-[120px] w-[120px] shrink-0 rounded-full bg-white p-1 shadow-[0_2px_12px_rgba(0,51,140,0.18)] max-[640px]:h-[84px] max-[640px]:w-[84px]">
             <Image
               src="/logo.jpg"
               alt="Quran Light Institute logo"
@@ -44,21 +48,21 @@ export default function Header() {
             />
           </span>
           <span className="wordmark leading-none">
-            <span className="block text-[1.7rem] font-extrabold tracking-tight max-[640px]:text-[1.2rem]">
+            <span className="block text-[2rem] font-black tracking-tight max-[640px]:text-[1.35rem]">
               <span className="grad-navy">Quran</span>{" "}
               <span className="grad-red">Light</span>
             </span>
             <span className="mt-1 flex items-center gap-2">
               <span className="flex flex-col gap-[3px]" aria-hidden="true">
-                <span className="h-[2px] w-6 rounded-full bg-brandRed max-[640px]:w-4" />
-                <span className="h-[2px] w-6 rounded-full bg-brandRed max-[640px]:w-4" />
+                <span className="h-[2px] w-7 rounded-full bg-brandRed max-[640px]:w-4" />
+                <span className="h-[2px] w-7 rounded-full bg-brandRed max-[640px]:w-4" />
               </span>
-              <span className="text-[0.9rem] font-extrabold tracking-[5px] text-navy max-[640px]:text-[0.68rem] max-[640px]:tracking-[3px]">
+              <span className="text-[1.05rem] font-black tracking-[6px] text-navy max-[640px]:text-[0.75rem] max-[640px]:tracking-[3px]">
                 INSTITUTE
               </span>
               <span className="flex flex-col gap-[3px]" aria-hidden="true">
-                <span className="h-[2px] w-6 rounded-full bg-brandRed max-[640px]:w-4" />
-                <span className="h-[2px] w-6 rounded-full bg-brandRed max-[640px]:w-4" />
+                <span className="h-[2px] w-7 rounded-full bg-brandRed max-[640px]:w-4" />
+                <span className="h-[2px] w-7 rounded-full bg-brandRed max-[640px]:w-4" />
               </span>
             </span>
             <span className="tagline-ribbon mt-2 inline-block bg-navy px-3 py-1 text-[0.72rem] font-bold text-white max-[640px]:text-[0.6rem]">
@@ -155,7 +159,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setTrialOpen(true)}
-            className="btn-trial ml-2 inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-brandRed px-5 py-3 text-[0.95rem] font-extrabold text-white shadow-card transition hover:bg-redDark"
+            className="btn-trial ml-2 inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-brandRed px-5 py-3 text-[0.95rem] font-extrabold text-white shadow-card transition hover:brightness-90"
           >
             3-Day FREE Trial
             <span aria-hidden="true">→</span>
