@@ -131,8 +131,8 @@ export default function HomePage() {
             <div className="relative">
               <div className="overflow-hidden rounded-[24px] border-[5px] border-white shadow-cardLg">
                 <Image
-                  src="/about.webp"
-                  alt="A girl learning the Holy Quran online with her teacher"
+                  src="https://images.pexels.com/photos/34407214/pexels-photo-34407214.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  alt="A mother and daughter reading the Holy Quran together in a mosque"
                   width={1920}
                   height={1280}
                   className="aspect-[3/2] w-full object-cover"
@@ -140,8 +140,8 @@ export default function HomePage() {
               </div>
               <div className="absolute -bottom-6 left-4 w-40 overflow-hidden rounded-[20px] border-4 border-white shadow-cardLg sm:w-52">
                 <Image
-                  src="/hero.jpg"
-                  alt="A student learning the Holy Quran online"
+                  src="https://images.pexels.com/photos/29183999/pexels-photo-29183999.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  alt="Prayer beads resting on an ornate Holy Quran"
                   width={1200}
                   height={900}
                   className="aspect-[4/3] w-full object-cover object-top"

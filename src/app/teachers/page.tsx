@@ -37,8 +37,8 @@ export default function TeachersPage() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 lg:grid-cols-2">
           <div className="overflow-hidden rounded-[24px] border-[5px] border-white shadow-cardLg">
             <Image
-              src="/hero.jpg"
-              alt="A student learning the Holy Quran online in a live one-to-one class"
+              src="https://images.pexels.com/photos/7249219/pexels-photo-7249219.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="A woman in a hijab holding the Holy Quran"
               width={1200}
               height={900}
               className="aspect-[4/3] w-full object-cover"

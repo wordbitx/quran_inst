@@ -5,7 +5,7 @@ import TrialForm from "@/components/TrialForm";
 /**
  * Hero — Minha-style split hero on pale cream/white.
  * Left: eyebrow, headline with "One-to-One Online" in red, supporting
- * line, two buttons side by side in one row. Right: /hero.jpg photo.
+ * line, two buttons side by side in one row. Right: a realistic photo photo.
  * The compact translucent TrialForm card ("3 Free Trial Classes")
  * overlaps the bottom of the hero.
  */
@@ -56,8 +56,8 @@ export default function Hero() {
         <div className="relative mx-auto w-full max-w-[560px] justify-self-center">
           <div className="overflow-hidden rounded-[24px] shadow-cardLg">
             <Image
-              src="/hero.jpg"
-              alt="A boy and a girl wearing headphones, learning Quran one-to-one online on a laptop"
+              src="https://images.pexels.com/photos/34481773/pexels-photo-34481773.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt="A woman in a hijab reading the Holy Quran on a prayer rug in a mosque"
               width={1760}
               height={1408}
               className="aspect-[1760/1408] w-full object-cover"

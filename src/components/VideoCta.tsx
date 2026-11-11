@@ -4,10 +4,10 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 
 /**
- * VideoCta — a compact dark band with a still poster (/about.webp) and a
+ * VideoCta — a compact dark band with a still poster (a realistic photo) and a
  * centred play button. The band never shows the video itself: clicking
  * play opens a POPUP modal player (overlay + close × top-right, backdrop
- * click and Escape close it) with <video controls poster="/about.webp"
+ * click and Escape close it) with <video controls poster="a realistic photo"
  * src="/intro.mp4">. The /intro.mp4 file is uploaded separately, so a
  * graceful fallback line sits under the player.
  */
@@ -49,8 +49,8 @@ export default function VideoCta() {
         {/* Still poster + play button only — no video inline. */}
         <div className="relative mx-auto mt-10 max-w-3xl overflow-hidden rounded-card shadow-cardLg">
           <Image
-            src="/about.webp"
-            alt="A girl learning the Holy Quran online with her teacher"
+            src="https://images.pexels.com/photos/20784662/pexels-photo-20784662.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            alt="An open Holy Quran"
             width={1920}
             height={1280}
             className="aspect-video w-full object-cover"
@@ -94,7 +94,7 @@ export default function VideoCta() {
             </button>
             <video
               controls
-              poster="/about.webp"
+              poster="https://images.pexels.com/photos/20784662/pexels-photo-20784662.jpeg?auto=compress&cs=tinysrgb&w=1600"
               src="/intro.mp4"
               className="aspect-video w-full bg-black object-contain"
             />
