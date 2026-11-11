@@ -12,7 +12,7 @@ const NAV = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Teachers", href: "/teachers" },
-  { label: "Testimonials", href: "/testimonials" },
+  { label: "Pricing", href: "/pricing" },
   { label: "FAQs", href: "/faqs" },
   { label: "Contact", href: "/contact" },
 ];
@@ -26,18 +26,15 @@ export default function Header() {
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
-  // Header is intentionally NOT sticky: the circular logo is deliberately
-  // oversized and overflows the bar top and bottom (like the reference) —
-  // a sticky header would clip the top of the logo when stuck.
+  /* Cream (#FDF6EC) sticky header. The logo is sized to fit INSIDE the
+     bar — a sticky header would clip an oversized overflowing logo at the
+     top of the viewport once the top bar has scrolled away. */
   return (
-    <header className="site relative z-40 border-b border-line bg-white">
-      <div className="mx-auto flex h-[76px] max-w-7xl items-center gap-3 px-4 max-[640px]:h-[60px]">
-        <Link href="/" className="brand flex items-center gap-3" aria-label="Quran Light Institute — home">
-          {/* Logo — 112px image inside a tight 120px white ring, so the ring
-              HUGS the logo (only ~4px of white all round) and overlaps the
-              bright-navy top bar above, like the reference. The ring is
-              part of the logo itself — no separate white scoop anywhere. */}
-          <span className="logo-shine block h-[120px] w-[120px] shrink-0 rounded-full bg-white p-1 shadow-[0_2px_12px_rgba(0,51,140,0.18)] max-[640px]:h-[84px] max-[640px]:w-[84px]">
+    <header className="sticky top-0 z-40 border-b border-line bg-cream">
+      <div className="mx-auto flex h-[76px] max-w-7xl items-center gap-3 px-4 max-[640px]:h-[64px]">
+        <Link href="/" className="brand flex min-w-0 items-center gap-3" aria-label="Quran Light Institute — home">
+          {/* Real circular logo — fits inside the bar, white ring hugging it. */}
+          <span className="logo-shine block h-[64px] w-[64px] shrink-0 rounded-full bg-white p-1 shadow-[0_2px_12px_rgba(0,51,140,0.18)] max-[640px]:h-[52px] max-[640px]:w-[52px]">
             <Image
               src="/logo.jpg"
               alt="Quran Light Institute logo"
@@ -47,8 +44,8 @@ export default function Header() {
               priority
             />
           </span>
-          <span className="wordmark leading-none">
-            <span className="block text-[2rem] font-black tracking-tight max-[640px]:text-[1.35rem]">
+          <span className="wordmark min-w-0 leading-none">
+            <span className="block font-display text-[1.7rem] font-bold tracking-tight max-[640px]:text-[1.3rem]">
               <span className="grad-navy">Quran</span>{" "}
               <span className="grad-red">Light</span>
             </span>
@@ -57,7 +54,7 @@ export default function Header() {
                 <span className="h-[2px] w-7 rounded-full bg-brandRed max-[640px]:w-4" />
                 <span className="h-[2px] w-7 rounded-full bg-brandRed max-[640px]:w-4" />
               </span>
-              <span className="text-[1.05rem] font-black tracking-[6px] text-navy max-[640px]:text-[0.75rem] max-[640px]:tracking-[3px]">
+              <span className="font-display text-[0.95rem] font-bold tracking-[6px] text-navy max-[640px]:text-[0.72rem] max-[640px]:tracking-[3px]">
                 INSTITUTE
               </span>
               <span className="flex flex-col gap-[3px]" aria-hidden="true">
@@ -65,7 +62,7 @@ export default function Header() {
                 <span className="h-[2px] w-7 rounded-full bg-brandRed max-[640px]:w-4" />
               </span>
             </span>
-            <span className="tagline-ribbon mt-2 inline-block bg-navy px-3 py-1 text-[0.72rem] font-bold text-white max-[640px]:text-[0.6rem]">
+            <span className="tagline-ribbon mt-2 inline-block bg-navy px-3 py-1 text-[0.68rem] font-bold text-white max-[640px]:text-[0.58rem]">
               {SITE_TAGLINE}
             </span>
           </span>
@@ -73,7 +70,7 @@ export default function Header() {
 
         <button
           type="button"
-          className="ml-auto flex h-11 w-11 items-center justify-center rounded-lg border border-line text-navy lg:hidden"
+          className="ml-auto flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-line bg-white text-navy lg:hidden"
           aria-label="Toggle menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -83,12 +80,12 @@ export default function Header() {
           </svg>
         </button>
 
-        <nav className="main ml-auto hidden items-center gap-1 lg:flex" aria-label="Main">
+        <nav className="main ml-auto hidden items-center gap-0.5 lg:flex" aria-label="Main">
           {NAV.slice(0, 2).map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`rounded-full px-3.5 py-2 text-[0.95rem] font-bold ${
+              className={`rounded-full px-3 py-2 text-[0.92rem] font-bold ${
                 isActive(item.href) ? "bg-brandRed text-white" : "text-navyDark hover:bg-sky"
               }`}
             >
@@ -104,7 +101,7 @@ export default function Header() {
             <div className="flex items-center">
               <Link
                 href="/courses"
-                className={`rounded-full px-3.5 py-2 text-[0.95rem] font-bold ${
+                className={`rounded-full px-3 py-2 text-[0.92rem] font-bold ${
                   isActive("/courses") ? "bg-brandRed text-white" : "text-navyDark hover:bg-sky"
                 }`}
               >
@@ -149,7 +146,7 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className={`rounded-full px-3.5 py-2 text-[0.95rem] font-bold ${
+              className={`rounded-full px-3 py-2 text-[0.92rem] font-bold ${
                 isActive(item.href) ? "bg-brandRed text-white" : "text-navyDark hover:bg-sky"
               }`}
             >
@@ -169,7 +166,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <nav className="border-t border-line bg-white px-4 py-3 lg:hidden" aria-label="Mobile">
+        <nav className="border-t border-line bg-cream px-4 py-3 lg:hidden" aria-label="Mobile">
           <div className="flex max-h-[70vh] flex-col gap-1 overflow-y-auto">
             {NAV.map((item) => (
               <Link

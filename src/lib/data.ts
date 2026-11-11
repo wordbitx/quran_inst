@@ -172,3 +172,10 @@ export const FAQS: Faq[] = [
   { q: "Which course should my child start with?", a: "Beginners usually start with Noorani Qaida, then move to Quran Reading (Nazra) and Tajweed. During your free trial classes, the teacher will assess the student's level and recommend the right course." },
   { q: "How do I start?", a: "Simply call or WhatsApp us on +92 305 6622104, or fill in the free trial form on the Contact page, and we will arrange your first class." },
 ];
+
+export type PricingPlan = { id: string; daysPerWeek: number; classesPerMonth: number; label: string; pace: string; features: string[]; popular?: boolean };
+export const PRICING_PLANS: PricingPlan[] = [
+  { id: "starter", daysPerWeek: 2, classesPerMonth: 8, label: "Starter", pace: "Gentle pace — steady weekly progress", features: ["2 days a week", "8 classes a month", "One-to-one live classes", "3-day FREE trial first"] },
+  { id: "regular", daysPerWeek: 3, classesPerMonth: 12, label: "Regular", pace: "Balanced pace — steady weekly progress", features: ["3 days a week", "12 classes a month", "One-to-one live classes", "3-day FREE trial first"], popular: true },
+  { id: "intensive", daysPerWeek: 5, classesPerMonth: 20, label: "Intensive", pace: "Fast pace — daily progress", features: ["5 days a week", "20 classes a month", "One-to-one live classes", "3-day FREE trial first"] },
+];

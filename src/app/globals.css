@@ -1,11 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@500;600;700;800&family=Noto+Sans:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ONE navy (#00338C) and ONE red (#D00000), sampled from the reference
-   image — every navy/red variable below is the same hex. */
+   image — every navy/red variable below is the same hex. Cream is the
+   warm off-white tint used for the sticky header. No orange anywhere. */
 :root {
   --navy: #00338c;
   --navy-2: #00338c;
@@ -13,6 +14,7 @@
   --navy-deep: #00338c;
   --red: #d00000;
   --red-dark: #d00000;
+  --cream: #fdf6ec;
 }
 
 html {
@@ -20,8 +22,18 @@ html {
 }
 
 body {
-  @apply bg-white text-ink antialiased;
+  @apply bg-white font-sans text-ink antialiased;
   overflow-x: hidden;
+}
+
+/* Headings use Lexend Deca, body uses Noto Sans. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Lexend Deca", "Noto Sans", system-ui, sans-serif;
 }
 
 ::selection {
@@ -38,39 +50,37 @@ body {
 /* Header trial button: white bold text on red, always — never let nav link
    colours override it (that was the visibility bug on the old site). */
 nav.main a.btn-trial,
-a.btn-trial {
+a.btn-trial,
+button.btn-trial {
   color: #fff !important;
   font-weight: 800;
 }
 
-/* Hero headline — the original project font (Baloo 2, extra bold), restored
-   for the "One-to-One Online Quran Classes" headline only. */
+/* Hero headline — Lexend Deca, extra bold. (The old Baloo 2 import and
+   the serif italic intro are gone; the class names are kept because
+   Hero.tsx uses them.) */
 .hero-headline {
-  font-family: "Baloo 2", "Nunito", system-ui, sans-serif;
+  font-family: "Lexend Deca", "Noto Sans", system-ui, sans-serif;
   font-weight: 800;
   letter-spacing: 0.2px;
 }
 
-/* Hero intro line — bold italic serif, like the reference design. */
+/* Hero intro line — Noto Sans, bold, no serif, no italic. */
 .hero-intro {
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
+  font-family: "Noto Sans", system-ui, sans-serif;
+  font-style: normal;
   font-weight: 700;
 }
 
-/* Header wordmark tagline — navy BLUE OVAL pill (fully rounded, white text),
-   like the client's own design. */
+/* Header wordmark tagline — navy pill (fully rounded, white text). */
 .tagline-ribbon {
   border-radius: 9999px;
   box-shadow: 0 4px 10px rgba(0, 51, 140, 0.28);
   white-space: nowrap;
 }
 
-/* Wordmark colours — ONE flat navy (#00338C) and ONE flat red (#D00000),
-   sampled from the reference. No gradients: the reference wordmark is a
-   single navy and a single red, and the old multi-shade gradients were
-   the second/third navies the user asked to remove. Class names kept so
-   Header.tsx needs no change. */
+/* Wordmark colours — ONE flat navy (#00338C) and ONE flat red (#D00000).
+   No gradients: the reference wordmark is a single navy and a single red. */
 .grad-navy {
   color: #00338c;
 }
@@ -137,6 +147,137 @@ a.btn-trial {
 }
 @media (prefers-reduced-motion: reduce) {
   .logo-shine::after {
+    animation: none;
+  }
+}
+
+/* ---- Marquee ----
+   Seamless -50% loop: the track holds two copies of the same content and
+   slides exactly one copy's width, so the loop has no jump. Pauses on
+   hover; fully disabled when the user prefers reduced motion. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  overflow: hidden;
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* ---- Scroll reveal ----
+   Components add .rv to an element and toggle .is-visible with an
+   IntersectionObserver when it enters the viewport. Starts faded and
+   shifted down, eases into place. Reduced-motion users see everything
+   immediately with no transition. */
+.rv {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+.rv.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .rv {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---- Red gradient accordion ----
+   Open item header: red gradient (one red, shaded darker towards the
+   bottom edge of the same hue). Closed header: pale navy tint. The
+   chevron rotates when the item is open. */
+.accordion-head {
+  background: #eef4fd;
+  transition: background 0.25s ease;
+}
+.accordion-head:hover {
+  background: #e2ecfd;
+}
+.accordion-item[data-open="true"] .accordion-head,
+.accordion-head.is-open {
+  background: linear-gradient(135deg, #d00000 0%, #a80000 100%);
+  color: #fff;
+}
+.accordion-head .accordion-chevron {
+  transition: transform 0.25s ease;
+}
+.accordion-item[data-open="true"] .accordion-chevron,
+.accordion-head.is-open .accordion-chevron {
+  transform: rotate(180deg);
+}
+.accordion-panel {
+  overflow: hidden;
+}
+
+/* ---- Pricing cards ----
+   Gentle lift + deeper shadow on hover, soft press on tap. */
+.pricing-card {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 50px rgba(0, 51, 140, 0.16);
+}
+.pricing-card:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* ---- Popup modal ----
+   Backdrop fade + panel pop-in. The panel itself is built with Tailwind
+   in TrialModal; these classes only add the entrance motion. */
+@keyframes modal-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes modal-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.modal-backdrop {
+  animation: modal-fade-in 0.2s ease;
+}
+.modal-panel {
+  animation: modal-pop-in 0.25s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .modal-backdrop,
+  .modal-panel {
     animation: none;
   }
 }

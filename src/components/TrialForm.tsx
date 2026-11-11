@@ -5,7 +5,7 @@ import { COURSES } from "@/lib/data";
 import { PHONE_DISPLAY, WHATSAPP_NUMBER } from "@/lib/site";
 
 const inputCls =
-  "w-full rounded-xl border border-cardBorder bg-white px-4 py-3 text-[16px] text-ink outline-none focus:border-navy focus:ring-2 focus:ring-navy/20";
+  "w-full rounded-xl border border-cardBorder bg-white/90 px-4 py-2.5 text-[16px] text-ink outline-none focus:border-navy focus:ring-2 focus:ring-navy/20";
 
 /**
  * Free-trial form — on submit it opens WhatsApp (wa.me/923056622104) with
@@ -15,6 +15,10 @@ const inputCls =
  * Courses are multi-select: pick a course from the dropdown and press the
  * + button to add it; added courses show as removable chips. The WhatsApp
  * message lists every selected course.
+ *
+ * Styled as a COMPACT translucent glass card (white/90, backdrop blur,
+ * soft shadow, rounded-2xl) — this is the hero "3 Free Trial Classes" card
+ * and the popup form.
  */
 export default function TrialForm({ defaultCourse = "" }: { defaultCourse?: string }) {
   const [name, setName] = useState("");
@@ -74,14 +78,19 @@ export default function TrialForm({ defaultCourse = "" }: { defaultCourse?: stri
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-card border border-cardBorder bg-white p-6 shadow-card sm:p-8">
-      <h2 className="text-2xl font-extrabold text-navyDark">Book Your 3-Day FREE Trial</h2>
-      <p className="mt-2 text-[0.95rem] leading-relaxed text-muted">
+    <form
+      onSubmit={handleSubmit}
+      className="rounded-2xl border border-white/60 bg-white/90 p-5 shadow-cardLg backdrop-blur-md sm:p-6"
+    >
+      <h2 className="font-display text-xl font-bold text-navyDark sm:text-2xl">
+        Book Your 3-Day FREE Trial
+      </h2>
+      <p className="mt-1.5 text-[0.92rem] leading-relaxed text-muted">
         Fill in the form — it opens WhatsApp with your details ready to send to{" "}
         <strong className="text-navyDark">{PHONE_DISPLAY}</strong>.
       </p>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+      <div className="mt-5 grid gap-3 sm:grid-cols-2">
         <label className="block">
           <span className="mb-1 block text-sm font-bold text-navyDark">Parent / Student Name *</span>
           <input className={inputCls} value={name} onChange={(e) => setName(e.target.value)} required placeholder="Your name" />
@@ -177,7 +186,7 @@ export default function TrialForm({ defaultCourse = "" }: { defaultCourse?: stri
 
       <button
         type="submit"
-        className="btn-trial mt-6 w-full rounded-full bg-brandRed px-6 py-4 text-lg text-white shadow-card transition hover:brightness-90"
+        className="btn-trial mt-5 w-full rounded-full bg-brandRed px-6 py-3.5 text-lg text-white shadow-card transition hover:brightness-90 active:scale-[0.99]"
       >
         Send via WhatsApp
       </button>

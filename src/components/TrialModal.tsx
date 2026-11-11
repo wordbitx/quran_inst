@@ -41,14 +41,14 @@ export default function TrialModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-navyDark/70 p-4 sm:p-6"
+      className="modal-backdrop fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-navyDark/70 p-4 sm:p-6"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label="Book your 3-day free trial"
     >
       <div
-        className="relative mx-4 my-4 flex max-h-[90vh] w-full max-w-2xl flex-col"
+        className="modal-panel relative mx-4 my-4 flex max-h-[90vh] w-full max-w-2xl flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -59,7 +59,7 @@ export default function TrialModal({
         >
           ×
         </button>
-        <div className="overflow-y-auto rounded-card">
+        <div className="overflow-y-auto rounded-2xl">
           <TrialForm defaultCourse={courseName} />
         </div>
       </div>
